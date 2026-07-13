@@ -1,0 +1,306 @@
+{
+  "info": {
+    "name": "Moyasar API",
+    "description": "Moyasar is a Saudi Arabian payment gateway. This collection covers a grounded subset of the REST API at https://api.moyasar.com/v1 - Payments, Invoices, Tokens, Webhooks, and Payouts. Authentication is HTTP Basic with your API key as the username and an empty password (publishable pk_ keys for client-side payment/token creation; secret sk_ keys for all backend operations). Amounts are in the smallest currency unit (halalas for SAR).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.moyasar.com/v1", "type": "string" },
+    { "key": "apiKey", "value": "sk_test_yourkey", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create a payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 10000,\n  \"currency\": \"SAR\",\n  \"description\": \"Order #1234\",\n  \"callback_url\": \"https://example.com/callback\",\n  \"source\": {\n    \"type\": \"creditcard\",\n    \"name\": \"John Doe\",\n    \"number\": \"4111111111111111\",\n    \"cvc\": \"123\",\n    \"month\": \"12\",\n    \"year\": \"2027\"\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Creates a payment. amount is in the smallest currency unit (halalas for SAR)."
+          }
+        },
+        {
+          "name": "List payments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments?page=1", "host": ["{{baseUrl}}"], "path": ["payments"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Lists payments with filtering and pagination."
+          }
+        },
+        {
+          "name": "Fetch a payment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments/:id", "host": ["{{baseUrl}}"], "path": ["payments", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single payment by its ID."
+          }
+        },
+        {
+          "name": "Refund a payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 5000\n}" },
+            "url": { "raw": "{{baseUrl}}/payments/:id/refund", "host": ["{{baseUrl}}"], "path": ["payments", ":id", "refund"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Refunds a paid payment, fully or partially. Omit amount for a full refund."
+          }
+        },
+        {
+          "name": "Capture a payment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 10000\n}" },
+            "url": { "raw": "{{baseUrl}}/payments/:id/capture", "host": ["{{baseUrl}}"], "path": ["payments", ":id", "capture"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Captures an authorized payment, fully or partially."
+          }
+        },
+        {
+          "name": "Void a payment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments/:id/void", "host": ["{{baseUrl}}"], "path": ["payments", ":id", "void"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Voids an authorized, not-yet-captured payment."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "Create an invoice",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 10000,\n  \"currency\": \"SAR\",\n  \"description\": \"Invoice #1234\",\n  \"callback_url\": \"https://example.com/callback\",\n  \"success_url\": \"https://example.com/success\"\n}" },
+            "url": { "raw": "{{baseUrl}}/invoices", "host": ["{{baseUrl}}"], "path": ["invoices"] },
+            "description": "Creates a hosted invoice and returns a Moyasar-hosted checkout url."
+          }
+        },
+        {
+          "name": "Bulk create invoices",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"invoices\": [\n    { \"amount\": 10000, \"currency\": \"SAR\", \"description\": \"Invoice A\" },\n    { \"amount\": 20000, \"currency\": \"SAR\", \"description\": \"Invoice B\" }\n  ]\n}" },
+            "url": { "raw": "{{baseUrl}}/invoices/bulk", "host": ["{{baseUrl}}"], "path": ["invoices", "bulk"] },
+            "description": "Creates multiple invoices in a single request."
+          }
+        },
+        {
+          "name": "List invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices?page=1", "host": ["{{baseUrl}}"], "path": ["invoices"], "query": [{ "key": "page", "value": "1" }] },
+            "description": "Lists invoices with pagination."
+          }
+        },
+        {
+          "name": "Fetch an invoice",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": ["{{baseUrl}}"], "path": ["invoices", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single invoice by its ID."
+          }
+        },
+        {
+          "name": "Update an invoice",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"description\": \"Updated description\"\n}" },
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": ["{{baseUrl}}"], "path": ["invoices", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Updates an existing invoice."
+          }
+        },
+        {
+          "name": "Cancel an invoice",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": ["{{baseUrl}}"], "path": ["invoices", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Cancels an invoice so it can no longer be paid."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tokens",
+      "item": [
+        {
+          "name": "Create a token",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "{{publishableKey}}", "type": "string" },
+                { "key": "password", "value": "", "type": "string" }
+              ]
+            },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"John Doe\",\n  \"number\": \"4111111111111111\",\n  \"cvc\": \"123\",\n  \"month\": \"12\",\n  \"year\": \"2027\",\n  \"callback_url\": \"https://example.com/callback\"\n}" },
+            "url": { "raw": "{{baseUrl}}/tokens", "host": ["{{baseUrl}}"], "path": ["tokens"] },
+            "description": "Tokenizes a card from the client side using a publishable key (pk_)."
+          }
+        },
+        {
+          "name": "Fetch a token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/tokens/:id", "host": ["{{baseUrl}}"], "path": ["tokens", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single token by its ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://example.com/webhooks/moyasar\",\n  \"http_method\": \"post\",\n  \"shared_secret\": \"my-shared-secret\",\n  \"events\": [\"payment_paid\", \"payment_failed\", \"payment_refunded\"]\n}" },
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] },
+            "description": "Registers an HTTPS endpoint to receive event notifications. Omit events for all events."
+          }
+        },
+        {
+          "name": "List webhooks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks", "host": ["{{baseUrl}}"], "path": ["webhooks"] },
+            "description": "Lists all registered webhooks."
+          }
+        },
+        {
+          "name": "Fetch a webhook",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["webhooks", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single webhook by its ID."
+          }
+        },
+        {
+          "name": "Delete a webhook",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/:id", "host": ["{{baseUrl}}"], "path": ["webhooks", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Removes a registered webhook."
+          }
+        },
+        {
+          "name": "List webhook attempts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/:id/attempts", "host": ["{{baseUrl}}"], "path": ["webhooks", ":id", "attempts"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Lists delivery attempts for a given webhook."
+          }
+        },
+        {
+          "name": "List available webhook events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/webhooks/available_events", "host": ["{{baseUrl}}"], "path": ["webhooks", "available_events"] },
+            "description": "Lists the event types available for webhook subscription."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payouts",
+      "item": [
+        {
+          "name": "Create a payout account",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"account_type\": \"bank\",\n  \"properties\": {\n    \"iban\": \"SA0000000000000000000000\"\n  }\n}" },
+            "url": { "raw": "{{baseUrl}}/payout_accounts", "host": ["{{baseUrl}}"], "path": ["payout_accounts"] },
+            "description": "Registers a bank or wallet payout account."
+          }
+        },
+        {
+          "name": "List payout accounts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payout_accounts", "host": ["{{baseUrl}}"], "path": ["payout_accounts"] },
+            "description": "Lists registered payout accounts."
+          }
+        },
+        {
+          "name": "Fetch a payout account",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payout_accounts/:id", "host": ["{{baseUrl}}"], "path": ["payout_accounts", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single payout account by its ID."
+          }
+        },
+        {
+          "name": "Create a payout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 50000,\n  \"currency\": \"SAR\",\n  \"payout_account_id\": \"\",\n  \"description\": \"Weekly settlement\"\n}" },
+            "url": { "raw": "{{baseUrl}}/payouts", "host": ["{{baseUrl}}"], "path": ["payouts"] },
+            "description": "Sends a single payout / disbursement to a payout account."
+          }
+        },
+        {
+          "name": "Bulk create payouts",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"payouts\": [\n    { \"amount\": 50000, \"currency\": \"SAR\", \"payout_account_id\": \"\" }\n  ]\n}" },
+            "url": { "raw": "{{baseUrl}}/payouts/bulk", "host": ["{{baseUrl}}"], "path": ["payouts", "bulk"] },
+            "description": "Sends multiple payouts in a single request."
+          }
+        },
+        {
+          "name": "List payouts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payouts", "host": ["{{baseUrl}}"], "path": ["payouts"] },
+            "description": "Lists payouts on the account."
+          }
+        },
+        {
+          "name": "Fetch a payout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payouts/:id", "host": ["{{baseUrl}}"], "path": ["payouts", ":id"], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Retrieves a single payout by its ID."
+          }
+        }
+      ]
+    }
+  ]
+}

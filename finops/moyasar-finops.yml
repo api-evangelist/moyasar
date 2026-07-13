@@ -1,0 +1,101 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Moyasar
+providerId: moyasar
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Payments
+- Payment Gateway
+- Saudi Arabia
+- mada
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Moyasar spend. Moyasar bills per successful transaction as a
+  percentage of the processed amount (plus a small fixed fee on card schemes),
+  with the rate varying by payment method - mada is cheapest, local Visa /
+  Mastercard higher, international cards highest, and wallet methods (Apple Pay,
+  STC Pay) at or near their underlying rate. Refunds may carry a small per-refund
+  fee. There is no API-call fee and typically no monthly platform fee on the
+  standard plan, so cost tracks payment volume and method mix. Settlement is
+  net of fees on a rolling schedule (commonly T+2 for SAR).
+notes: >-
+  Per-method rates are modeled from public secondary sources, not an official
+  Moyasar rate card, and are marked reconciled:false. The dominant cost driver
+  is gross payment volume weighted by method mix; shifting volume toward mada and
+  wallets lowers blended cost. Verify rates and settlement terms against the
+  merchant agreement during reconciliation.
+sources:
+- https://moyasar.com/en/
+- https://moyasar.com/en/resources/faqs/
+- https://moyasar.com/en/products/payments-infrastructure/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Moyasar
+serviceCategory: Payments and Financial Services
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Per-Transaction
+  billingCurrency: SAR
+  chargeCategories:
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Moyasar Payment Gateway
+  ServiceCategory: Payments and Financial Services
+  ProviderName: Moyasar
+  PublisherName: Moyasar
+  InvoiceIssuerName: Moyasar
+  BillingCurrency: SAR
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: mada_volume
+  description: Value processed on mada, billed as a percentage plus a fixed per-transaction fee.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - method
+- name: scheme_volume
+  description: Value processed on Visa / Mastercard / Amex (local and international), billed as a percentage plus a fixed fee; international rate is higher.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - method
+  - region
+- name: wallet_volume
+  description: Value processed on Apple Pay, Samsung Pay, and STC Pay, billed at or near the underlying card / wallet rate.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - method
+- name: refund_fees
+  description: Per-refund fees applied when a payment is refunded.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track gross payment volume and effective fee by method (mada vs scheme vs wallet) and by test vs live mode; reconcile settlements net of fees.
+- name: Allocation
+  description: Tag payments with metadata (order, team, product) so processing cost maps to internal cost centers.
+- name: Optimization
+  description: Steer eligible volume toward lower-cost methods (mada, wallets), minimize avoidable refunds, and batch payouts to control disbursement overhead.
+- name: Accountability
+  description: Assign an owner for payment-processing cost; review monthly blended fee rate and method mix against targets.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

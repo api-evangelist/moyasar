@@ -1,0 +1,272 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moyasar API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Payments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payments",
+            "body": { "type": "json", "data": "{\n  \"amount\": 10000,\n  \"currency\": \"SAR\",\n  \"description\": \"Order #1234\",\n  \"callback_url\": \"https://example.com/callback\",\n  \"source\": { \"type\": \"creditcard\", \"name\": \"John Doe\", \"number\": \"4111111111111111\", \"cvc\": \"123\", \"month\": \"12\", \"year\": \"2027\" }\n}" }
+          },
+          "docs": "Creates a payment. amount is in the smallest currency unit (halalas for SAR)."
+        },
+        {
+          "info": { "name": "List payments", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payments?page=1",
+            "params": [{ "name": "page", "value": "1", "type": "query", "description": "Page number." }]
+          },
+          "docs": "Lists payments with filtering and pagination."
+        },
+        {
+          "info": { "name": "Fetch a payment", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payments/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payment UUID." }]
+          },
+          "docs": "Retrieves a single payment by its ID."
+        },
+        {
+          "info": { "name": "Refund a payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payments/:id/refund",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payment UUID." }],
+            "body": { "type": "json", "data": "{\n  \"amount\": 5000\n}" }
+          },
+          "docs": "Refunds a paid payment, fully or partially. Omit amount for a full refund."
+        },
+        {
+          "info": { "name": "Capture a payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payments/:id/capture",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payment UUID." }],
+            "body": { "type": "json", "data": "{\n  \"amount\": 10000\n}" }
+          },
+          "docs": "Captures an authorized payment, fully or partially."
+        },
+        {
+          "info": { "name": "Void a payment", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payments/:id/void",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payment UUID." }]
+          },
+          "docs": "Voids an authorized, not-yet-captured payment."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create an invoice", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/invoices",
+            "body": { "type": "json", "data": "{\n  \"amount\": 10000,\n  \"currency\": \"SAR\",\n  \"description\": \"Invoice #1234\",\n  \"callback_url\": \"https://example.com/callback\"\n}" }
+          },
+          "docs": "Creates a hosted invoice and returns a Moyasar-hosted checkout url."
+        },
+        {
+          "info": { "name": "Bulk create invoices", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/invoices/bulk",
+            "body": { "type": "json", "data": "{\n  \"invoices\": [ { \"amount\": 10000, \"currency\": \"SAR\", \"description\": \"Invoice A\" } ]\n}" }
+          },
+          "docs": "Creates multiple invoices in a single request."
+        },
+        {
+          "info": { "name": "List invoices", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/invoices?page=1",
+            "params": [{ "name": "page", "value": "1", "type": "query", "description": "Page number." }]
+          },
+          "docs": "Lists invoices with pagination."
+        },
+        {
+          "info": { "name": "Fetch an invoice", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The invoice UUID." }]
+          },
+          "docs": "Retrieves a single invoice by its ID."
+        },
+        {
+          "info": { "name": "Update an invoice", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The invoice UUID." }],
+            "body": { "type": "json", "data": "{\n  \"description\": \"Updated description\"\n}" }
+          },
+          "docs": "Updates an existing invoice."
+        },
+        {
+          "info": { "name": "Cancel an invoice", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The invoice UUID." }]
+          },
+          "docs": "Cancels an invoice so it can no longer be paid."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Tokens", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a token", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/tokens",
+            "body": { "type": "json", "data": "{\n  \"name\": \"John Doe\",\n  \"number\": \"4111111111111111\",\n  \"cvc\": \"123\",\n  \"month\": \"12\",\n  \"year\": \"2027\",\n  \"callback_url\": \"https://example.com/callback\"\n}" }
+          },
+          "docs": "Tokenizes a card from the client side using a publishable key (pk_)."
+        },
+        {
+          "info": { "name": "Fetch a token", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/tokens/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The token ID." }]
+          },
+          "docs": "Retrieves a single token by its ID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a webhook", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/webhooks",
+            "body": { "type": "json", "data": "{\n  \"url\": \"https://example.com/webhooks/moyasar\",\n  \"http_method\": \"post\",\n  \"shared_secret\": \"my-shared-secret\",\n  \"events\": [\"payment_paid\", \"payment_failed\", \"payment_refunded\"]\n}" }
+          },
+          "docs": "Registers an HTTPS endpoint to receive event notifications. Omit events for all events."
+        },
+        {
+          "info": { "name": "List webhooks", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.moyasar.com/v1/webhooks" },
+          "docs": "Lists all registered webhooks."
+        },
+        {
+          "info": { "name": "Fetch a webhook", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The webhook ID." }]
+          },
+          "docs": "Retrieves a single webhook by its ID."
+        },
+        {
+          "info": { "name": "Delete a webhook", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.moyasar.com/v1/webhooks/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The webhook ID." }]
+          },
+          "docs": "Removes a registered webhook."
+        },
+        {
+          "info": { "name": "List webhook attempts", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks/:id/attempts",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The webhook ID." }]
+          },
+          "docs": "Lists delivery attempts for a given webhook."
+        },
+        {
+          "info": { "name": "List available webhook events", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.moyasar.com/v1/webhooks/available_events" },
+          "docs": "Lists the event types available for webhook subscription."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Payouts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a payout account", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payout_accounts",
+            "body": { "type": "json", "data": "{\n  \"account_type\": \"bank\",\n  \"properties\": { \"iban\": \"SA0000000000000000000000\" }\n}" }
+          },
+          "docs": "Registers a bank or wallet payout account."
+        },
+        {
+          "info": { "name": "List payout accounts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.moyasar.com/v1/payout_accounts" },
+          "docs": "Lists registered payout accounts."
+        },
+        {
+          "info": { "name": "Fetch a payout account", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payout_accounts/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payout account UUID." }]
+          },
+          "docs": "Retrieves a single payout account by its ID."
+        },
+        {
+          "info": { "name": "Create a payout", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payouts",
+            "body": { "type": "json", "data": "{\n  \"amount\": 50000,\n  \"currency\": \"SAR\",\n  \"payout_account_id\": \"\",\n  \"description\": \"Weekly settlement\"\n}" }
+          },
+          "docs": "Sends a single payout / disbursement to a payout account."
+        },
+        {
+          "info": { "name": "Bulk create payouts", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payouts/bulk",
+            "body": { "type": "json", "data": "{\n  \"payouts\": [ { \"amount\": 50000, \"currency\": \"SAR\", \"payout_account_id\": \"\" } ]\n}" }
+          },
+          "docs": "Sends multiple payouts in a single request."
+        },
+        {
+          "info": { "name": "List payouts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.moyasar.com/v1/payouts" },
+          "docs": "Lists payouts on the account."
+        },
+        {
+          "info": { "name": "Fetch a payout", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payouts/:id",
+            "params": [{ "name": "id", "value": "", "type": "path", "description": "The payout UUID." }]
+          },
+          "docs": "Retrieves a single payout by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

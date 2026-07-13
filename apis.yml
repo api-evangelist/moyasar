@@ -1,0 +1,164 @@
+aid: moyasar
+url: https://raw.githubusercontent.com/api-evangelist/moyasar/refs/heads/main/apis.yml
+name: Moyasar
+kind: company
+description: Moyasar is a Saudi Arabian payment gateway that lets businesses accept
+  online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung
+  Pay, and STC Pay. Its REST API (base https://api.moyasar.com/v1) covers payments
+  (create, fetch, list, refund, capture, void), hosted invoices, card tokenization,
+  webhooks, and payouts / disbursements. Authentication is HTTP Basic with a publishable
+  or secret API key as the username and an empty password, in separate test and live
+  modes.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- Payment Gateway
+- Saudi Arabia
+- MENA
+- mada
+- Cards
+- Apple Pay
+- STC Pay
+- Invoices
+- Fintech
+created: '2026-07-12'
+modified: '2026-07-12'
+specificationVersion: '0.19'
+apis:
+- aid: moyasar:moyasar-payments-api
+  name: Moyasar Payments API
+  tags:
+  - Payments
+  - Cards
+  - mada
+  - Refunds
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.moyasar.com/api/payments/01-create-payment
+  baseURL: https://api.moyasar.com/v1
+  properties:
+  - url: https://docs.moyasar.com/api/payments/01-create-payment
+    type: Documentation
+  - url: https://docs.moyasar.com/api/payments/02-fetch-payment
+    type: APIReference
+  - url: openapi/moyasar-openapi.yml
+    type: OpenAPI
+  - url: collections/moyasar.postman_collection.json
+    type: PostmanCollection
+  - url: collections/moyasar.opencollection.json
+    type: OpenCollection
+  description: Create, fetch, and list card / wallet payments and manage their lifecycle -
+    refund, capture (for authorized payments), and void. Amounts are in the smallest
+    currency unit (halalas for SAR); sources include creditcard, token, applepay,
+    samsungpay, and stcpay.
+- aid: moyasar:moyasar-invoices-api
+  name: Moyasar Invoices API
+  tags:
+  - Invoices
+  - Hosted Checkout
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.moyasar.com/api/invoices/01-create-invoice
+  baseURL: https://api.moyasar.com/v1
+  properties:
+  - url: https://docs.moyasar.com/api/invoices/01-create-invoice
+    type: Documentation
+  - url: openapi/moyasar-openapi.yml
+    type: OpenAPI
+  - url: collections/moyasar.postman_collection.json
+    type: PostmanCollection
+  - url: collections/moyasar.opencollection.json
+    type: OpenCollection
+  description: Create hosted invoices that return a Moyasar-hosted checkout URL, then
+    fetch, list, update, and cancel them. Supports bulk invoice creation, expiry,
+    and success / back / callback URLs for post-payment redirects and notifications.
+- aid: moyasar:moyasar-tokens-api
+  name: Moyasar Tokens API
+  tags:
+  - Tokenization
+  - Cards
+  - Publishable Key
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.moyasar.com/api/other/tokens/create-token/
+  baseURL: https://api.moyasar.com/v1
+  properties:
+  - url: https://docs.moyasar.com/api/other/tokens/create-token/
+    type: Documentation
+  - url: https://docs.moyasar.com/api/other/tokens/token-object/
+    type: APIReference
+  - url: openapi/moyasar-openapi.yml
+    type: OpenAPI
+  - url: collections/moyasar.postman_collection.json
+    type: PostmanCollection
+  - url: collections/moyasar.opencollection.json
+    type: OpenCollection
+  description: Tokenize mada / credit cards from the client side using a publishable
+    key so card data never touches the merchant backend, then reuse the token as a
+    payment source. Create and fetch tokens.
+- aid: moyasar:moyasar-webhooks-api
+  name: Moyasar Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.moyasar.com/api/other/webhooks/webhook-reference/
+  baseURL: https://api.moyasar.com/v1
+  properties:
+  - url: https://docs.moyasar.com/api/other/webhooks/webhook-reference/
+    type: Documentation
+  - url: https://docs.moyasar.com/api/other/webhooks/create-webhook/
+    type: APIReference
+  - url: openapi/moyasar-openapi.yml
+    type: OpenAPI
+  - url: collections/moyasar.postman_collection.json
+    type: PostmanCollection
+  - url: collections/moyasar.opencollection.json
+    type: OpenCollection
+  description: Register HTTPS endpoints to receive server-to-server event notifications
+    (payment_paid, payment_failed, payment_refunded, payment_captured, payment_voided,
+    payment_authorized, and more). Create, list, fetch, and delete webhooks, list
+    delivery attempts, and list available event types. Delivery is HTTP POST - there
+    is no WebSocket surface.
+- aid: moyasar:moyasar-payouts-api
+  name: Moyasar Payouts API
+  tags:
+  - Payouts
+  - Disbursements
+  - Bank Transfer
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.moyasar.com/api/payouts/01-create-payout-account
+  baseURL: https://api.moyasar.com/v1
+  properties:
+  - url: https://docs.moyasar.com/api/payouts/01-create-payout-account
+    type: Documentation
+  - url: openapi/moyasar-openapi.yml
+    type: OpenAPI
+  - url: collections/moyasar.postman_collection.json
+    type: PostmanCollection
+  - url: collections/moyasar.opencollection.json
+    type: OpenCollection
+  description: Register payout accounts (bank or wallet) and send single, listed, or
+    bulk payouts / disbursements to those accounts. Create and list payout accounts,
+    create single and bulk payouts, and fetch or list individual payouts.
+common:
+- type: DomainSecurity
+  url: security/moyasar-domain-security.yml
+- type: Authentication
+  url: authentication/moyasar-authentication.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/moyasar
+- type: Website
+  url: https://moyasar.com/
+- type: Documentation
+  url: https://docs.moyasar.com/
+- type: Plans
+  url: plans/moyasar-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/moyasar-rate-limits.yml
+- type: FinOps
+  url: finops/moyasar-finops.yml
+- url: https://moyasar.com/en/blog/
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

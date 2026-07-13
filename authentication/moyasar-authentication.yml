@@ -1,0 +1,21 @@
+generated: '2026-07-12'
+method: derived
+source: openapi/moyasar-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: >-
+    HTTP Basic authentication. The API key is passed as the username and the
+    password is left empty (e.g. `curl https://api.moyasar.com/v1/payments -u
+    sk_test_123:`). All requests must be over HTTPS. Publishable keys
+    (pk_test_ / pk_live_) are safe for client-side use and may only create
+    payments and tokens; secret keys (sk_test_ / sk_live_) authorize all account
+    operations and must remain on the backend. Test-mode keys drive a sandbox,
+    live-mode keys move real money.
+  sources:
+  - openapi/moyasar-openapi.yml
+  - https://docs.moyasar.com/api/authentication

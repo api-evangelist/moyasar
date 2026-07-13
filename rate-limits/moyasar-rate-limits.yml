@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Moyasar
+providerId: moyasar
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Payments
+- Payment Gateway
+- Saudi Arabia
+- mada
+- Rate Limiting
+- Quotas
+description: >-
+  Moyasar does not publish fixed numeric per-account or per-endpoint rate limits
+  for its REST API in the public documentation. Standard payment-gateway
+  hygiene applies: authenticate every request over HTTPS with a valid API key,
+  use the `given_id` idempotency field on payment creation to avoid duplicate
+  charges on retries, and implement exponential backoff with jitter on transient
+  errors. Webhook delivery is retried by Moyasar (up to six attempts) when the
+  merchant endpoint does not return a 2xx quickly.
+notes: >-
+  Numeric request-rate limits are not documented as of the review date. Values
+  here describe documented behaviors (idempotency, webhook retries) rather than
+  published caps; verify any hard limits directly with Moyasar for high-volume
+  or bulk (invoices/bulk, payouts/bulk) workloads.
+sources:
+- https://docs.moyasar.com/
+- https://docs.moyasar.com/api/authentication
+- https://docs.moyasar.com/api/other/webhooks/webhook-reference/
+responseCodes:
+  throttled: 429
+limits:
+- name: REST API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the Moyasar REST API.
+- name: Payment Idempotency
+  scope: account
+  metric: requests
+  limit: client-controlled
+  notes: Supply a UUID in `given_id` on create-payment to make retries idempotent and avoid duplicate charges.
+- name: Webhook Delivery Retries
+  scope: webhook
+  metric: attempts
+  limit: up to 6 attempts
+  notes: Moyasar retries webhook delivery when the endpoint does not quickly return a 2xx status code.
+policies:
+- name: HTTPS Required
+  description: All API calls must be made over HTTPS; plain HTTP requests are rejected.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on any 429 responses.
+- name: Idempotency
+  description: Use the given_id field on payment creation so network retries do not create duplicate payments.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

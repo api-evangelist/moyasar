@@ -1,0 +1,129 @@
+aid: moyasar
+name: Moyasar
+review:
+  question: Does Moyasar expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-12'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Moyasar's public API is request/response
+    REST over HTTPS at https://api.moyasar.com/v1. Its only asynchronous,
+    server-initiated surface is outbound webhooks: Moyasar delivers event
+    notifications (payment_paid, payment_failed, payment_refunded, etc.) to a
+    merchant-registered HTTPS endpoint via HTTP POST. That is server-to-endpoint
+    HTTP, not a WebSocket (ws:// or wss://) transport, so there is no
+    bidirectional/streaming protocol on Moyasar's own API to model in AsyncAPI.
+findings:
+  summary: |
+    Moyasar does not publish a documented public WebSocket API. Moyasar is a
+    Saudi Arabian payment gateway. Its public API is a pure request/response
+    REST API served over HTTPS at base https://api.moyasar.com/v1, authenticated
+    with HTTP Basic auth using an API key as the username and an empty password.
+    Realtime status updates are delivered by outbound webhooks (HTTP POST to a
+    merchant endpoint), not by any WebSocket or SSE channel. No ws:// or wss://
+    endpoint is documented anywhere in the Moyasar API reference as of the
+    review date.
+  accessModel: |
+    Two key classes in two modes. Publishable keys (pk_test_ / pk_live_) are
+    safe for client-side use and may only create payments and tokenize cards.
+    Secret keys (sk_test_ / sk_live_) authorize all account operations and must
+    stay on the backend. Test-mode keys (pk_test_ / sk_test_) operate a sandbox;
+    live-mode keys (pk_live_ / sk_live_) move real money. All calls must be
+    HTTPS; HTTP is rejected.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.moyasar.com/v1
+      documented: true
+      note: Payments, Invoices, Tokens, Webhooks (management), and Payouts. HTTP Basic auth, API key as username.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Outbound event notifications delivered as HTTP POST to a merchant-registered endpoint, with retry (up to 6 attempts) and an optional shared secret. Not a WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Moyasar API reference as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.moyasar.com/v1/payments
+    - GET    https://api.moyasar.com/v1/payments
+    - GET    https://api.moyasar.com/v1/payments/{id}
+    - POST   https://api.moyasar.com/v1/payments/{id}/refund
+    - POST   https://api.moyasar.com/v1/payments/{id}/capture
+    - POST   https://api.moyasar.com/v1/payments/{id}/void
+    - POST   https://api.moyasar.com/v1/invoices
+    - POST   https://api.moyasar.com/v1/invoices/bulk
+    - GET    https://api.moyasar.com/v1/invoices
+    - GET    https://api.moyasar.com/v1/invoices/{id}
+    - PUT    https://api.moyasar.com/v1/invoices/{id}
+    - DELETE https://api.moyasar.com/v1/invoices/{id}
+    - POST   https://api.moyasar.com/v1/tokens
+    - GET    https://api.moyasar.com/v1/tokens/{id}
+    - POST   https://api.moyasar.com/v1/webhooks
+    - GET    https://api.moyasar.com/v1/webhooks
+    - GET    https://api.moyasar.com/v1/webhooks/{id}
+    - DELETE https://api.moyasar.com/v1/webhooks/{id}
+    - GET    https://api.moyasar.com/v1/webhooks/{id}/attempts
+    - GET    https://api.moyasar.com/v1/webhooks/available_events
+    - POST   https://api.moyasar.com/v1/payout_accounts
+    - GET    https://api.moyasar.com/v1/payout_accounts
+    - GET    https://api.moyasar.com/v1/payout_accounts/{id}
+    - POST   https://api.moyasar.com/v1/payouts
+    - POST   https://api.moyasar.com/v1/payouts/bulk
+    - GET    https://api.moyasar.com/v1/payouts
+    - GET    https://api.moyasar.com/v1/payouts/{id}
+  endpointsModeledNote: |
+    All paths above are grounded in the public Moyasar documentation. The
+    request/response JSON schemas in the OpenAPI document are a representative
+    subset modeled from the docs and are intentionally partial (schemas allow
+    additionalProperties); some field names, enum members, and the exact
+    fetch-token path shape were inferred from the token object and reference
+    pages rather than copied field-for-field. The Payout list/fetch and payout
+    account fetch paths follow the documented REST resource pattern but their
+    query parameters and full response bodies are modeled, not exhaustively
+    confirmed. Per-transaction pricing in finops/plans is modeled from public
+    secondary sources and marked reconciled:false.
+sources:
+  - url: https://docs.moyasar.com/
+    type: Documentation
+    note: Developer documentation overview; links to Payments, Invoices, Payouts, Tokens, Webhooks.
+  - url: https://docs.moyasar.com/api/authentication
+    type: Documentation
+    note: HTTP Basic auth, API key as username with empty password; pk_/sk_ test/live key classes; base https://api.moyasar.com/v1.
+  - url: https://docs.moyasar.com/api/payments/01-create-payment
+    type: APIReference
+    note: POST /payments; amount in smallest currency unit; source types creditcard/token/applepay/samsungpay/stcpay; status enum.
+  - url: https://docs.moyasar.com/api/payments/02-fetch-payment
+    type: APIReference
+    note: GET /payments/{id}, and refund/capture/void sub-actions.
+  - url: https://docs.moyasar.com/api/payments/03-list-payments
+    type: APIReference
+    note: GET /payments with page/status/created filters and pagination meta.
+  - url: https://docs.moyasar.com/api/invoices/01-create-invoice
+    type: APIReference
+    note: Invoice CRUD plus /invoices/bulk; hosted checkout url; status enum.
+  - url: https://docs.moyasar.com/api/other/tokens/create-token/
+    type: APIReference
+    note: POST /tokens with a publishable key for client-side card tokenization.
+  - url: https://docs.moyasar.com/api/other/tokens/token-object/
+    type: APIReference
+    note: Token object fields (brand, funding, last_four, verification_url).
+  - url: https://docs.moyasar.com/api/other/webhooks/webhook-reference/
+    type: APIReference
+    note: Webhook management endpoints; HTTP POST delivery; no WebSocket.
+  - url: https://docs.moyasar.com/api/other/webhooks/available-webhooks/
+    type: APIReference
+    note: GET /webhooks/available_events; enumerates event types.
+  - url: https://docs.moyasar.com/api/payouts/01-create-payout-account
+    type: APIReference
+    note: Payout accounts and payouts, including /payouts/bulk.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Moyasar's own public API is
+    request/response REST plus outbound HTTP POST webhooks. No AsyncAPI document
+    was created because there is no server-push WebSocket/SSE transport on
+    Moyasar's own API to model; the webhook channel is plain HTTP POST and is
+    already represented as a Webhook property, not an event-streaming interface.

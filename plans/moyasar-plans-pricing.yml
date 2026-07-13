@@ -1,0 +1,135 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Moyasar
+providerId: moyasar
+created: '2026-07-12'
+modified: '2026-07-12'
+reconciled: false
+tags:
+- Payments
+- Payment Gateway
+- Saudi Arabia
+- mada
+- Plans
+- Pricing
+description: >-
+  Moyasar prices per successful transaction rather than by API tier - there is
+  no separate fee to call the API. Standard published rates are a percentage
+  (plus a small fixed fee on card schemes) that varies by payment method:
+  mada is the cheapest, local Visa/Mastercard sit higher, international cards
+  higher still, and wallet methods (Apple Pay, STC Pay) price at or near their
+  underlying card / wallet rate. Setup and monthly fees are typically waived on
+  the standard plan; high-volume merchants negotiate custom rates with sales.
+  The rates below are modeled from public secondary sources and are NOT
+  reconciled against a Moyasar contract - treat them as indicative only.
+notes: >-
+  Per-method rates are indicative and drawn from third-party comparison sources,
+  not an official Moyasar rate card; they are marked reconciled:false. Actual
+  pricing depends on the merchant agreement, volume, and settlement terms.
+  Confirm current rates directly with Moyasar during reconciliation.
+sources:
+- https://moyasar.com/en/
+- https://moyasar.com/en/resources/faqs/
+- https://moyasar.com/en/products/payments-infrastructure/
+plans:
+- id: moyasar-standard
+  name: Standard (Pay Per Transaction)
+  type: usage
+  description: >-
+    Pay-as-you-go processing with no setup or monthly fee on the standard plan.
+    Fees are charged per successful transaction and vary by payment method.
+    API access (payments, invoices, tokens, webhooks, payouts) is included.
+  entries:
+  - label: mada
+    name: mada_transaction
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: ~1.95% + SAR 1 per transaction (indicative, not reconciled)
+    userMultiplied: false
+  - label: Visa / Mastercard (local)
+    name: scheme_local_transaction
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: ~2.40% + SAR 1 per transaction (indicative, not reconciled)
+    userMultiplied: false
+  - label: International Cards
+    name: scheme_international_transaction
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~3.25% + SAR 1.5 per transaction (indicative, not reconciled)
+    userMultiplied: false
+  - label: Apple Pay
+    name: applepay_transaction
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: card-equivalent rate for the underlying card (indicative, not reconciled)
+    userMultiplied: false
+  - label: STC Pay
+    name: stcpay_transaction
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: ~2.00% per transaction (indicative, not reconciled)
+    userMultiplied: false
+  - label: Refund Fee
+    name: refund_fee
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: SA
+    unit: 1
+    price: ~SAR 1 per refund (indicative, not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Payments API
+  - name: Invoices API
+  - name: Tokenization
+  - name: Webhooks
+  - name: Payouts / Disbursements
+  - name: mada, Visa, Mastercard, Amex, Apple Pay, Samsung Pay, STC Pay
+- id: moyasar-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Negotiated per-transaction rates and terms for high-volume merchants,
+    including custom settlement timing and dedicated support. Contact Moyasar
+    sales.
+  entries:
+  - label: Custom Volume Pricing
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Negotiated Per-Transaction Rates
+  - name: Custom Settlement Terms
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
