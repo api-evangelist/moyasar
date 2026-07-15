@@ -141,6 +141,8 @@ apis:
     bulk payouts / disbursements to those accounts. Create and list payout accounts,
     create single and bulk payouts, and fetch or list individual payouts.
 common:
+- type: AgenticAccess
+  url: agentic-access/moyasar-agentic-access.yml
 - type: DomainSecurity
   url: security/moyasar-domain-security.yml
 - type: Authentication
