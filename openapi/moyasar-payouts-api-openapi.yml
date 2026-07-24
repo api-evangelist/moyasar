@@ -1,0 +1,304 @@
+openapi: 3.0.3
+info:
+  title: Moyasar Invoices Payouts API
+  description: 'Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).
+
+    This description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.'
+  version: '1.0'
+  contact:
+    name: Moyasar
+    url: https://moyasar.com
+  license:
+    name: Proprietary
+    url: https://moyasar.com/en/terms/
+servers:
+- url: https://api.moyasar.com/v1
+  description: Moyasar production API
+security:
+- basicAuth: []
+tags:
+- name: Payouts
+  description: Payout accounts and payouts / disbursements.
+paths:
+  /payout_accounts:
+    get:
+      operationId: listPayoutAccounts
+      tags:
+      - Payouts
+      summary: List payout accounts
+      description: Lists registered payout accounts.
+      responses:
+        '200':
+          description: A list of payout accounts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payout_accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayoutAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPayoutAccount
+      tags:
+      - Payouts
+      summary: Create a payout account
+      description: Registers a bank or wallet payout account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutAccountInput'
+      responses:
+        '201':
+          description: The created payout account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /payout_accounts/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: The payout account ID.
+      schema:
+        type: string
+        format: uuid
+    get:
+      operationId: fetchPayoutAccount
+      tags:
+      - Payouts
+      summary: Fetch a payout account
+      description: Retrieves a single payout account by its ID.
+      responses:
+        '200':
+          description: The requested payout account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /payouts:
+    get:
+      operationId: listPayouts
+      tags:
+      - Payouts
+      summary: List payouts
+      description: Lists payouts on the account.
+      responses:
+        '200':
+          description: A list of payouts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payouts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payout'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPayout
+      tags:
+      - Payouts
+      summary: Create a payout
+      description: Sends a single payout / disbursement to a payout account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutInput'
+      responses:
+        '201':
+          description: The created payout.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /payouts/bulk:
+    post:
+      operationId: createPayoutsBulk
+      tags:
+      - Payouts
+      summary: Bulk create payouts
+      description: Sends multiple payouts in a single request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payouts:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PayoutInput'
+      responses:
+        '201':
+          description: The created payouts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payouts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payout'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /payouts/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: The payout ID.
+      schema:
+        type: string
+        format: uuid
+    get:
+      operationId: fetchPayout
+      tags:
+      - Payouts
+      summary: Fetch a payout
+      description: Retrieves a single payout by its ID.
+      responses:
+        '200':
+          description: The requested payout.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payout'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    PayoutInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - payout_account_id
+      properties:
+        amount:
+          type: integer
+          description: Amount in the smallest currency unit.
+        currency:
+          type: string
+          default: SAR
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    Payout:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        amount:
+          type: integer
+        amount_format:
+          type: string
+        currency:
+          type: string
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    PayoutAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        account_type:
+          type: string
+          enum:
+          - bank
+          - wallet
+        currency:
+          type: string
+        properties:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    PayoutAccountInput:
+      type: object
+      required:
+      - account_type
+      - properties
+      properties:
+        account_type:
+          type: string
+          enum:
+          - bank
+          - wallet
+        properties:
+          type: object
+          description: Public account information (e.g. IBAN for bank accounts).
+          additionalProperties: true
+        credentials:
+          type: object
+          description: Secret account information (e.g. private keys).
+          additionalProperties: true
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Pass your API key as the username and leave the password empty (e.g. `-u sk_test_123:`). Publishable keys (pk_test_ / pk_live_) may only create payments and tokens; secret keys (sk_test_ / sk_live_) authorize all operations.

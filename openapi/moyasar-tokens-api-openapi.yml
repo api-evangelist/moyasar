@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Moyasar Invoices Tokens API
+  description: 'Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).
+
+    This description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.'
+  version: '1.0'
+  contact:
+    name: Moyasar
+    url: https://moyasar.com
+  license:
+    name: Proprietary
+    url: https://moyasar.com/en/terms/
+servers:
+- url: https://api.moyasar.com/v1
+  description: Moyasar production API
+security:
+- basicAuth: []
+tags:
+- name: Tokens
+  description: Client-side card tokenization using a publishable key.
+paths:
+  /tokens:
+    post:
+      operationId: createToken
+      tags:
+      - Tokens
+      summary: Create a token
+      description: Tokenizes a mada / credit card. Intended to be called from the client side with a publishable key so raw card data never reaches the merchant backend. The resulting token id can be used as a payment source.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenInput'
+      responses:
+        '201':
+          description: The created token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tokens/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: The token ID.
+      schema:
+        type: string
+    get:
+      operationId: fetchToken
+      tags:
+      - Tokens
+      summary: Fetch a token
+      description: Retrieves a single token by its ID.
+      responses:
+        '200':
+          description: The requested token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    TokenInput:
+      type: object
+      required:
+      - name
+      - number
+      - month
+      - year
+      - cvc
+      properties:
+        name:
+          type: string
+        number:
+          type: string
+        month:
+          type: string
+        year:
+          type: string
+        cvc:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        brand:
+          type: string
+        funding:
+          type: string
+        company:
+          type: string
+        last_four:
+          type: string
+        month:
+          type: string
+        year:
+          type: string
+        verification_url:
+          type: string
+          format: uri
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Pass your API key as the username and leave the password empty (e.g. `-u sk_test_123:`). Publishable keys (pk_test_ / pk_live_) may only create payments and tokens; secret keys (sk_test_ / sk_live_) authorize all operations.
