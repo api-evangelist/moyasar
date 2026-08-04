@@ -1,0 +1,22 @@
+{
+  "provider": "moyasar",
+  "sources": [
+    "moyasar-invoices-api-openapi.yml",
+    "moyasar-payments-api-openapi.yml",
+    "moyasar-payouts-api-openapi.yml",
+    "moyasar-tokens-api-openapi.yml",
+    "moyasar-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "moyasar-invoices-api-openapi.yml",
+    "moyasar-payments-api-openapi.yml",
+    "moyasar-payouts-api-openapi.yml",
+    "moyasar-tokens-api-openapi.yml",
+    "moyasar-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
