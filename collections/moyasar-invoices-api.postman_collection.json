@@ -1,0 +1,1173 @@
+{
+  "item": [
+    {
+      "id": "71d523f7-b3b8-4e20-baff-a0f4f84dec20",
+      "name": "Invoices",
+      "description": {
+        "content": "Hosted invoices with a Moyasar-hosted checkout URL.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3882f171-801f-4930-81bf-19333bc04040",
+          "name": "List invoices",
+          "request": {
+            "name": "List invoices",
+            "description": {
+              "content": "Lists invoices on the account with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "443a9e73-7708-42d2-9b91-1731d35b54b9",
+              "name": "A paginated list of invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"d7745ec8-2291-983a-be66-05cf8c5b00b7\",\n      \"status\": \"refunded\",\n      \"amount\": 152,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"https://TtvAlaSuiVobdasOZyxycgAtropQO.tnmzK57z2b4zwCrq80iCLDUjExjKokb,Ny8XHc4q\",\n      \"expired_at\": \"2006-04-22T23:17:51.541Z\",\n      \"payments\": [\n        {\n          \"id\": \"335ffea3-3949-9236-b328-5cde53355e95\",\n          \"status\": \"initiated\",\n          \"amount\": 9350,\n          \"fee\": 6111,\n          \"currency\": \"string\",\n          \"refunded\": 3135,\n          \"refunded_at\": \"1947-10-09T02:12:17.065Z\",\n          \"captured\": 5175,\n          \"captured_at\": \"1969-05-31T17:20:56.882Z\",\n          \"voided_at\": \"1986-07-05T00:26:29.404Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"2020-07-20T10:00:39.775Z\",\n          \"updated_at\": \"1979-06-17T00:49:46.600Z\",\n          \"metadata\": {\n            \"key_0\": \"string\",\n            \"key_1\": false,\n            \"key_2\": 5759\n          },\n          \"source\": {\n            \"key_0\": false,\n            \"key_1\": 2242,\n            \"key_2\": \"string\",\n            \"key_3\": true,\n            \"key_4\": \"string\"\n          }\n        },\n        {\n          \"id\": \"76635fcf-f39b-68ce-3156-47599c0d05b0\",\n          \"status\": \"paid\",\n          \"amount\": 7374,\n          \"fee\": 7828,\n          \"currency\": \"string\",\n          \"refunded\": 9187,\n          \"refunded_at\": \"2004-08-24T18:13:10.967Z\",\n          \"captured\": 5474,\n          \"captured_at\": \"2005-09-11T09:49:42.683Z\",\n          \"voided_at\": \"1983-10-22T10:17:12.451Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"2025-05-28T11:49:02.887Z\",\n          \"updated_at\": \"1954-05-16T06:47:56.187Z\",\n          \"metadata\": {\n            \"key_0\": false,\n            \"key_1\": 213.34966517840058\n          },\n          \"source\": {\n            \"key_0\": \"string\"\n          }\n        }\n      ],\n      \"created_at\": \"1952-01-25T05:16:36.671Z\",\n      \"updated_at\": \"1989-01-23T18:47:22.115Z\",\n      \"metadata\": {\n        \"key_0\": 3196.551271736272,\n        \"key_1\": 5600.417124172218,\n        \"key_2\": 312\n      }\n    },\n    {\n      \"id\": \"2c8e7977-7534-853b-c332-52d4d6e87fe0\",\n      \"status\": \"refunded\",\n      \"amount\": 698,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"http://CrgLKAbOyGoikpjBUx.ddvaee6OzYg5N,pm3cLHyFhiOViVHH5Oq6uXfNUnARsHw\",\n      \"expired_at\": \"1987-04-16T11:31:15.660Z\",\n      \"payments\": [\n        {\n          \"id\": \"2b504cdf-da60-b169-5b9c-e03ade55214a\",\n          \"status\": \"failed\",\n          \"amount\": 2347,\n          \"fee\": 6005,\n          \"currency\": \"string\",\n          \"refunded\": 3143,\n          \"refunded_at\": \"2019-11-20T02:17:35.581Z\",\n          \"captured\": 801,\n          \"captured_at\": \"2005-02-23T07:18:46.181Z\",\n          \"voided_at\": \"1988-06-17T17:46:42.189Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"2007-10-05T05:15:52.535Z\",\n          \"updated_at\": \"1947-04-15T17:47:37.017Z\",\n          \"metadata\": {\n            \"key_0\": 3931.8267129290207,\n            \"key_1\": 220,\n            \"key_2\": false,\n            \"key_3\": true\n          },\n          \"source\": {\n            \"key_0\": \"string\"\n          },\n          \"key_0\": 9575.399052745686\n        },\n        {\n          \"id\": \"dc13aa15-bcd6-39e1-17d9-4180b988abae\",\n          \"status\": \"voided\",\n          \"amount\": 4137,\n          \"fee\": 7639,\n          \"currency\": \"string\",\n          \"refunded\": 3778,\n          \"refunded_at\": \"1992-10-07T23:57:29.938Z\",\n          \"captured\": 2718,\n          \"captured_at\": \"2022-07-20T11:04:34.205Z\",\n          \"voided_at\": \"2012-11-07T13:56:56.964Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"2015-12-15T04:52:09.744Z\",\n          \"updated_at\": \"1991-06-13T16:42:06.991Z\",\n          \"metadata\": {\n            \"key_0\": false,\n            \"key_1\": 7977.137308014822\n          },\n          \"source\": {\n            \"key_0\": false,\n            \"key_1\": 849,\n            \"key_2\": false,\n            \"key_3\": 8836.877096965507\n          }\n        }\n      ],\n      \"created_at\": \"1970-01-28T07:50:53.716Z\",\n      \"updated_at\": \"1999-07-04T02:41:17.567Z\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 7758,\n    \"next_page\": 665,\n    \"prev_page\": 5411,\n    \"total_pages\": 5700,\n    \"total_count\": 1667\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efed68ce-77f6-42b1-aeda-5b95301fcfdb",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c1ecf6a-459f-4d14-9183-85aec24a0dbf",
+          "name": "Create an invoice",
+          "request": {
+            "name": "Create an invoice",
+            "description": {
+              "content": "Creates a hosted invoice and returns a Moyasar-hosted checkout `url` to present to the payer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 246.61027664101164,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30328c8e-288e-44dd-9061-6cf8e713fa1b",
+              "name": "The created invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"136f43e4-1f8a-8612-9f8a-ceee079b2232\",\n  \"status\": \"refunded\",\n  \"amount\": 507,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"url\": \"http://JrpU.qnmG6XH0fD34IB.-HrLJuA.tXudqxCOZu+pZ1SPCt7uiJK6OlDtiH\",\n  \"expired_at\": \"1976-10-18T15:41:14.557Z\",\n  \"payments\": [\n    {\n      \"id\": \"737f84e6-b157-617e-8373-b96936bbfd92\",\n      \"status\": \"authorized\",\n      \"amount\": 9502,\n      \"fee\": 4071,\n      \"currency\": \"string\",\n      \"refunded\": 5087,\n      \"refunded_at\": \"1981-01-12T04:49:20.264Z\",\n      \"captured\": 8912,\n      \"captured_at\": \"1969-02-07T20:24:51.334Z\",\n      \"voided_at\": \"1985-07-28T07:35:42.460Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"2015-03-24T16:05:29.203Z\",\n      \"updated_at\": \"1991-01-09T22:57:38.550Z\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": \"string\",\n        \"key_3\": 9584.654761022877\n      },\n      \"source\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"id\": \"e08a5c04-d956-27d6-04d4-38eed31aeadf\",\n      \"status\": \"paid\",\n      \"amount\": 3814,\n      \"fee\": 5154,\n      \"currency\": \"string\",\n      \"refunded\": 4793,\n      \"refunded_at\": \"2023-11-23T23:35:34.045Z\",\n      \"captured\": 5318,\n      \"captured_at\": \"1967-04-18T02:35:06.025Z\",\n      \"voided_at\": \"1979-07-10T04:41:17.088Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"1964-10-23T14:47:37.729Z\",\n      \"updated_at\": \"1978-07-24T10:50:32.627Z\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6682\n      },\n      \"source\": {\n        \"key_0\": 4789\n      }\n    }\n  ],\n  \"created_at\": \"1948-03-29T00:19:06.139Z\",\n  \"updated_at\": \"1972-03-26T01:02:17.753Z\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa4997f0-194b-482c-85b1-31b55880d3ee",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a514b5de-89b4-4510-9fbe-d2a4db04115b",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8af6afa-1def-435c-ba49-c7c4da2bf15a",
+          "name": "Bulk create invoices",
+          "request": {
+            "name": "Bulk create invoices",
+            "description": {
+              "content": "Creates multiple invoices in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoices\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3eef8358-b346-4650-9f97-3b213e54e5f3",
+              "name": "The created invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoices\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"af9bc1b8-0ba4-be57-7769-d52fdc56cf58\",\n      \"status\": \"paid\",\n      \"amount\": 7403,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"https://cfAVOHJ.cnuwQ+zJImCI+0,Ufcg7cX\",\n      \"expired_at\": \"1986-12-13T04:54:14.004Z\",\n      \"payments\": [\n        {\n          \"id\": \"34f04e1e-4377-d975-9a8a-1c18720d1544\",\n          \"status\": \"voided\",\n          \"amount\": 1507,\n          \"fee\": 3573,\n          \"currency\": \"string\",\n          \"refunded\": 5894,\n          \"refunded_at\": \"2009-11-04T08:32:51.136Z\",\n          \"captured\": 4552,\n          \"captured_at\": \"1972-04-18T15:36:21.305Z\",\n          \"voided_at\": \"1964-03-26T15:10:19.491Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"1999-11-07T10:11:20.292Z\",\n          \"updated_at\": \"1995-01-08T17:42:15.986Z\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          },\n          \"source\": {\n            \"key_0\": 8968.298459998332,\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"id\": \"a6358ceb-2449-be1b-51f0-b9130fd41f7b\",\n          \"status\": \"paid\",\n          \"amount\": 5399,\n          \"fee\": 8971,\n          \"currency\": \"string\",\n          \"refunded\": 5295,\n          \"refunded_at\": \"1978-07-06T16:27:41.649Z\",\n          \"captured\": 7750,\n          \"captured_at\": \"2019-01-02T20:25:28.430Z\",\n          \"voided_at\": \"2015-12-13T13:09:23.472Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"1972-03-11T18:09:01.855Z\",\n          \"updated_at\": \"1956-09-30T12:13:33.735Z\",\n          \"metadata\": {\n            \"key_0\": \"string\"\n          },\n          \"source\": {\n            \"key_0\": \"string\"\n          }\n        }\n      ],\n      \"created_at\": \"1949-09-25T22:18:22.349Z\",\n      \"updated_at\": \"2013-02-02T03:04:11.934Z\",\n      \"metadata\": {\n        \"key_0\": 6283,\n        \"key_1\": 2867\n      }\n    },\n    {\n      \"id\": \"ab924efd-432e-64b4-5e44-4533c7c3573d\",\n      \"status\": \"expired\",\n      \"amount\": 3396,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"description\": \"string\",\n      \"url\": \"http://pKPWudguOPNMqKdgnPWeSQUppzWU.ddofJ8igvNU+9Rz\",\n      \"expired_at\": \"1989-09-01T01:49:20.116Z\",\n      \"payments\": [\n        {\n          \"id\": \"34f75064-7b9d-b378-d7bd-3c313b83eb86\",\n          \"status\": \"paid\",\n          \"amount\": 4170,\n          \"fee\": 1331,\n          \"currency\": \"string\",\n          \"refunded\": 1641,\n          \"refunded_at\": \"1964-05-01T16:30:59.632Z\",\n          \"captured\": 879,\n          \"captured_at\": \"1951-09-30T04:18:51.574Z\",\n          \"voided_at\": \"2000-06-11T07:19:02.210Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"2001-07-09T23:20:23.312Z\",\n          \"updated_at\": \"1947-03-09T10:40:14.473Z\",\n          \"metadata\": {\n            \"key_0\": 7822,\n            \"key_1\": true,\n            \"key_2\": 2448.0646107017333\n          },\n          \"source\": {\n            \"key_0\": 8115,\n            \"key_1\": 7438\n          }\n        },\n        {\n          \"id\": \"097682e4-a703-b067-1b72-bd68753b886e\",\n          \"status\": \"paid\",\n          \"amount\": 5056,\n          \"fee\": 5001,\n          \"currency\": \"string\",\n          \"refunded\": 7042,\n          \"refunded_at\": \"2025-09-28T00:18:05.230Z\",\n          \"captured\": 1992,\n          \"captured_at\": \"2010-04-20T17:30:40.861Z\",\n          \"voided_at\": \"1959-02-21T18:21:33.364Z\",\n          \"amount_format\": \"string\",\n          \"description\": \"string\",\n          \"invoice_id\": \"string\",\n          \"ip\": \"string\",\n          \"callback_url\": \"string\",\n          \"created_at\": \"1985-07-13T05:06:25.235Z\",\n          \"updated_at\": \"1984-09-06T06:25:47.822Z\",\n          \"metadata\": {\n            \"key_0\": 4657.443670430167,\n            \"key_1\": \"string\"\n          },\n          \"source\": {\n            \"key_0\": 6676\n          }\n        }\n      ],\n      \"created_at\": \"1955-07-23T16:11:27.238Z\",\n      \"updated_at\": \"1980-06-16T18:49:06.573Z\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3350.8006337875895\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c4a206d-8e55-4aca-b6f2-d79ec3fa15bd",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoices\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"description\": \"<string>\",\n      \"callback_url\": \"<uri>\",\n      \"success_url\": \"<uri>\",\n      \"back_url\": \"<uri>\",\n      \"expired_at\": \"<dateTime>\",\n      \"metadata\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22a4e1da-8b21-4d86-8873-d9556698486f",
+          "name": "Fetch an invoice",
+          "request": {
+            "name": "Fetch an invoice",
+            "description": {
+              "content": "Retrieves a single invoice by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The invoice UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2aa6ae7-bb2a-48d5-95bd-897162a6b2b4",
+              "name": "The requested invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"136f43e4-1f8a-8612-9f8a-ceee079b2232\",\n  \"status\": \"refunded\",\n  \"amount\": 507,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"url\": \"http://JrpU.qnmG6XH0fD34IB.-HrLJuA.tXudqxCOZu+pZ1SPCt7uiJK6OlDtiH\",\n  \"expired_at\": \"1976-10-18T15:41:14.557Z\",\n  \"payments\": [\n    {\n      \"id\": \"737f84e6-b157-617e-8373-b96936bbfd92\",\n      \"status\": \"authorized\",\n      \"amount\": 9502,\n      \"fee\": 4071,\n      \"currency\": \"string\",\n      \"refunded\": 5087,\n      \"refunded_at\": \"1981-01-12T04:49:20.264Z\",\n      \"captured\": 8912,\n      \"captured_at\": \"1969-02-07T20:24:51.334Z\",\n      \"voided_at\": \"1985-07-28T07:35:42.460Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"2015-03-24T16:05:29.203Z\",\n      \"updated_at\": \"1991-01-09T22:57:38.550Z\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": \"string\",\n        \"key_3\": 9584.654761022877\n      },\n      \"source\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"id\": \"e08a5c04-d956-27d6-04d4-38eed31aeadf\",\n      \"status\": \"paid\",\n      \"amount\": 3814,\n      \"fee\": 5154,\n      \"currency\": \"string\",\n      \"refunded\": 4793,\n      \"refunded_at\": \"2023-11-23T23:35:34.045Z\",\n      \"captured\": 5318,\n      \"captured_at\": \"1967-04-18T02:35:06.025Z\",\n      \"voided_at\": \"1979-07-10T04:41:17.088Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"1964-10-23T14:47:37.729Z\",\n      \"updated_at\": \"1978-07-24T10:50:32.627Z\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6682\n      },\n      \"source\": {\n        \"key_0\": 4789\n      }\n    }\n  ],\n  \"created_at\": \"1948-03-29T00:19:06.139Z\",\n  \"updated_at\": \"1972-03-26T01:02:17.753Z\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74038e7b-f3b1-4ed4-87cd-8c268a21b193",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6aed723a-f0e9-4246-9fa8-d7130a161558",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f567b77e-3d7a-44fe-a703-888d5fb46d09",
+          "name": "Update an invoice",
+          "request": {
+            "name": "Update an invoice",
+            "description": {
+              "content": "Updates an existing invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The invoice UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 246.61027664101164,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ece027d1-4ffb-45b8-9afc-a5d4eac455ad",
+              "name": "The updated invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"136f43e4-1f8a-8612-9f8a-ceee079b2232\",\n  \"status\": \"refunded\",\n  \"amount\": 507,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"url\": \"http://JrpU.qnmG6XH0fD34IB.-HrLJuA.tXudqxCOZu+pZ1SPCt7uiJK6OlDtiH\",\n  \"expired_at\": \"1976-10-18T15:41:14.557Z\",\n  \"payments\": [\n    {\n      \"id\": \"737f84e6-b157-617e-8373-b96936bbfd92\",\n      \"status\": \"authorized\",\n      \"amount\": 9502,\n      \"fee\": 4071,\n      \"currency\": \"string\",\n      \"refunded\": 5087,\n      \"refunded_at\": \"1981-01-12T04:49:20.264Z\",\n      \"captured\": 8912,\n      \"captured_at\": \"1969-02-07T20:24:51.334Z\",\n      \"voided_at\": \"1985-07-28T07:35:42.460Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"2015-03-24T16:05:29.203Z\",\n      \"updated_at\": \"1991-01-09T22:57:38.550Z\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": \"string\",\n        \"key_3\": 9584.654761022877\n      },\n      \"source\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"id\": \"e08a5c04-d956-27d6-04d4-38eed31aeadf\",\n      \"status\": \"paid\",\n      \"amount\": 3814,\n      \"fee\": 5154,\n      \"currency\": \"string\",\n      \"refunded\": 4793,\n      \"refunded_at\": \"2023-11-23T23:35:34.045Z\",\n      \"captured\": 5318,\n      \"captured_at\": \"1967-04-18T02:35:06.025Z\",\n      \"voided_at\": \"1979-07-10T04:41:17.088Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"1964-10-23T14:47:37.729Z\",\n      \"updated_at\": \"1978-07-24T10:50:32.627Z\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6682\n      },\n      \"source\": {\n        \"key_0\": 4789\n      }\n    }\n  ],\n  \"created_at\": \"1948-03-29T00:19:06.139Z\",\n  \"updated_at\": \"1972-03-26T01:02:17.753Z\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8e283bb-7a01-4ffc-8042-7e95f4686837",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a03a99ac-7d4c-4df1-8c03-8b6530c8f611",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"success_url\": \"<uri>\",\n  \"back_url\": \"<uri>\",\n  \"expired_at\": \"<dateTime>\",\n  \"metadata\": {\n    \"key_0\": 6953,\n    \"key_1\": 6858\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "633a1a2f-56a5-4701-8b27-1e2dab089b26",
+          "name": "Cancel an invoice",
+          "request": {
+            "name": "Cancel an invoice",
+            "description": {
+              "content": "Cancels an invoice so it can no longer be paid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The invoice UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0118f71-37dc-4429-93c0-65c76db6431d",
+              "name": "The canceled invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"136f43e4-1f8a-8612-9f8a-ceee079b2232\",\n  \"status\": \"refunded\",\n  \"amount\": 507,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"description\": \"string\",\n  \"url\": \"http://JrpU.qnmG6XH0fD34IB.-HrLJuA.tXudqxCOZu+pZ1SPCt7uiJK6OlDtiH\",\n  \"expired_at\": \"1976-10-18T15:41:14.557Z\",\n  \"payments\": [\n    {\n      \"id\": \"737f84e6-b157-617e-8373-b96936bbfd92\",\n      \"status\": \"authorized\",\n      \"amount\": 9502,\n      \"fee\": 4071,\n      \"currency\": \"string\",\n      \"refunded\": 5087,\n      \"refunded_at\": \"1981-01-12T04:49:20.264Z\",\n      \"captured\": 8912,\n      \"captured_at\": \"1969-02-07T20:24:51.334Z\",\n      \"voided_at\": \"1985-07-28T07:35:42.460Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"2015-03-24T16:05:29.203Z\",\n      \"updated_at\": \"1991-01-09T22:57:38.550Z\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": \"string\",\n        \"key_3\": 9584.654761022877\n      },\n      \"source\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"id\": \"e08a5c04-d956-27d6-04d4-38eed31aeadf\",\n      \"status\": \"paid\",\n      \"amount\": 3814,\n      \"fee\": 5154,\n      \"currency\": \"string\",\n      \"refunded\": 4793,\n      \"refunded_at\": \"2023-11-23T23:35:34.045Z\",\n      \"captured\": 5318,\n      \"captured_at\": \"1967-04-18T02:35:06.025Z\",\n      \"voided_at\": \"1979-07-10T04:41:17.088Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"1964-10-23T14:47:37.729Z\",\n      \"updated_at\": \"1978-07-24T10:50:32.627Z\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": 6682\n      },\n      \"source\": {\n        \"key_0\": 4789\n      }\n    }\n  ],\n  \"created_at\": \"1948-03-29T00:19:06.139Z\",\n  \"updated_at\": \"1972-03-26T01:02:17.753Z\",\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "504f17c7-3461-40b0-82c3-6737b4fd0ea7",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1544dcf-da36-4379-9113-a7faff64da19",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The invoice UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 5853,\n    \"key_1\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moyasar.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e2d06809-d5eb-4a12-8c81-f44a8b1ecf1a",
+    "name": "Moyasar Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).\nThis description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.\n\nContact Support:\n Name: Moyasar",
+      "type": "text/plain"
+    }
+  }
+}

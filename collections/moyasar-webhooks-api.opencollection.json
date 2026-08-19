@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moyasar Invoices Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks"
+          },
+          "docs": "Lists all registered webhooks."
+        },
+        {
+          "info": {
+            "name": "Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers an HTTPS endpoint to receive event notifications. Omit `events` to subscribe to all current and future events."
+        },
+        {
+          "info": {
+            "name": "Fetch a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The webhook ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single webhook by its ID."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.moyasar.com/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The webhook ID."
+              }
+            ]
+          },
+          "docs": "Removes a registered webhook."
+        },
+        {
+          "info": {
+            "name": "List webhook attempts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks/:id/attempts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The webhook ID."
+              }
+            ]
+          },
+          "docs": "Lists delivery attempts for a given webhook."
+        },
+        {
+          "info": {
+            "name": "List available webhook events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/webhooks/available_events"
+          },
+          "docs": "Lists the event types available for webhook subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

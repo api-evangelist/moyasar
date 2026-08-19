@@ -1,0 +1,1347 @@
+{
+  "item": [
+    {
+      "id": "9d3e24e3-63db-4cd2-85f6-ea21655875a6",
+      "name": "Payments",
+      "description": {
+        "content": "Create and manage card and wallet payments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f6aead5-d3ac-4aec-85f6-6d38ada84394",
+          "name": "List payments",
+          "request": {
+            "name": "List payments",
+            "description": {
+              "content": "Lists payments on the account with filtering and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created[gt]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created[lt]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "card_last_digits",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "receipt_no",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ca62b85-b97b-47ae-9483-855d62035d6d",
+              "name": "A paginated list of payments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created[gt]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created[lt]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "card_last_digits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "receipt_no",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payments\": [\n    {\n      \"id\": \"f60b4f03-995a-bdb7-54d5-16afc9f4f31d\",\n      \"status\": \"voided\",\n      \"amount\": 8924,\n      \"fee\": 5831,\n      \"currency\": \"string\",\n      \"refunded\": 8791,\n      \"refunded_at\": \"1972-04-25T12:21:39.565Z\",\n      \"captured\": 7375,\n      \"captured_at\": \"1996-12-22T05:08:41.563Z\",\n      \"voided_at\": \"1967-10-31T16:36:54.675Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"1973-01-23T12:10:35.975Z\",\n      \"updated_at\": \"1974-02-21T14:48:29.960Z\",\n      \"metadata\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 7695\n      },\n      \"source\": {\n        \"key_0\": \"string\",\n        \"key_1\": true\n      }\n    },\n    {\n      \"id\": \"031250b8-75c7-053b-b228-ffd9bedec1ee\",\n      \"status\": \"authorized\",\n      \"amount\": 5123,\n      \"fee\": 8029,\n      \"currency\": \"string\",\n      \"refunded\": 3442,\n      \"refunded_at\": \"1981-06-24T15:46:24.477Z\",\n      \"captured\": 2279,\n      \"captured_at\": \"2026-05-06T17:04:16.514Z\",\n      \"voided_at\": \"1968-07-17T06:32:53.021Z\",\n      \"amount_format\": \"string\",\n      \"description\": \"string\",\n      \"invoice_id\": \"string\",\n      \"ip\": \"string\",\n      \"callback_url\": \"string\",\n      \"created_at\": \"2001-05-26T10:28:04.852Z\",\n      \"updated_at\": \"2007-09-13T06:19:10.869Z\",\n      \"metadata\": {\n        \"key_0\": true\n      },\n      \"source\": {\n        \"key_0\": 2493.6325194431797,\n        \"key_1\": 922\n      }\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 1111,\n    \"next_page\": 5841,\n    \"prev_page\": 9115,\n    \"total_pages\": 6888,\n    \"total_count\": 3599\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44341e3e-e86f-4719-a3cf-388a66a3603c",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created[gt]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created[lt]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "card_last_digits",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "receipt_no",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cc69c46-6547-4a35-b57a-a052d49d5401",
+          "name": "Create a payment",
+          "request": {
+            "name": "Create a payment",
+            "description": {
+              "content": "Creates a payment. Can be called with a publishable key from the client side or a secret key from the backend. The `source` object selects the payment method (creditcard, token, applepay, samsungpay, stcpay).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"source\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"cvc\": \"<string>\",\n    \"month\": \"<string>\",\n    \"year\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"given_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 3929\n  },\n  \"splits\": [\n    {\n      \"key_0\": 3130\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 6863,\n      \"key_2\": 8277,\n      \"key_3\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "119d959c-8798-4ab2-aac1-e9f6883a1f03",
+              "name": "The created payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"source\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"cvc\": \"<string>\",\n    \"month\": \"<string>\",\n    \"year\": \"<string>\",\n    \"token\": \"<string>\",\n    \"key_0\": \"string\",\n    \"key_1\": 8821.626344969622\n  },\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"given_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 7790.351062733568\n  },\n  \"splits\": [\n    {\n      \"key_0\": 3208,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 5008,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"497286b8-10ac-f8bc-fdb2-467a5e930321\",\n  \"status\": \"refunded\",\n  \"amount\": 7315,\n  \"fee\": 474,\n  \"currency\": \"string\",\n  \"refunded\": 5831,\n  \"refunded_at\": \"1965-07-23T22:23:08.405Z\",\n  \"captured\": 2549,\n  \"captured_at\": \"1993-04-14T22:03:23.070Z\",\n  \"voided_at\": \"1983-12-05T14:01:29.513Z\",\n  \"amount_format\": \"string\",\n  \"description\": \"string\",\n  \"invoice_id\": \"string\",\n  \"ip\": \"string\",\n  \"callback_url\": \"string\",\n  \"created_at\": \"2001-03-07T05:49:04.472Z\",\n  \"updated_at\": \"1984-09-12T04:57:27.896Z\",\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"source\": {\n    \"key_0\": 2084.116958381903,\n    \"key_1\": 9760\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dc1af57-9e6f-4b14-bf57-e5829b025842",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"source\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"cvc\": \"<string>\",\n    \"month\": \"<string>\",\n    \"year\": \"<string>\",\n    \"token\": \"<string>\",\n    \"key_0\": \"string\",\n    \"key_1\": 8821.626344969622\n  },\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"given_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 7790.351062733568\n  },\n  \"splits\": [\n    {\n      \"key_0\": 3208,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 5008,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad248e17-cad6-4c44-bc67-7da50900e316",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"source\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"number\": \"<string>\",\n    \"cvc\": \"<string>\",\n    \"month\": \"<string>\",\n    \"year\": \"<string>\",\n    \"token\": \"<string>\",\n    \"key_0\": \"string\",\n    \"key_1\": 8821.626344969622\n  },\n  \"description\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"given_id\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 7790.351062733568\n  },\n  \"splits\": [\n    {\n      \"key_0\": 3208,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 5008,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "320d03f8-5813-42f5-9e98-77ebf340293c",
+          "name": "Fetch a payment",
+          "request": {
+            "name": "Fetch a payment",
+            "description": {
+              "content": "Retrieves a single payment by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payment UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2653db34-0303-4e02-b8f6-df93bac63302",
+              "name": "The requested payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"497286b8-10ac-f8bc-fdb2-467a5e930321\",\n  \"status\": \"refunded\",\n  \"amount\": 7315,\n  \"fee\": 474,\n  \"currency\": \"string\",\n  \"refunded\": 5831,\n  \"refunded_at\": \"1965-07-23T22:23:08.405Z\",\n  \"captured\": 2549,\n  \"captured_at\": \"1993-04-14T22:03:23.070Z\",\n  \"voided_at\": \"1983-12-05T14:01:29.513Z\",\n  \"amount_format\": \"string\",\n  \"description\": \"string\",\n  \"invoice_id\": \"string\",\n  \"ip\": \"string\",\n  \"callback_url\": \"string\",\n  \"created_at\": \"2001-03-07T05:49:04.472Z\",\n  \"updated_at\": \"1984-09-12T04:57:27.896Z\",\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"source\": {\n    \"key_0\": 2084.116958381903,\n    \"key_1\": 9760\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68bf682c-71d8-4c5d-94bb-8674dce4b945",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8f80126-12f2-4a15-96f9-26c67ce218aa",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd7c5a4b-ea77-4f2f-9b5f-610096b2c58f",
+          "name": "Refund a payment",
+          "request": {
+            "name": "Refund a payment",
+            "description": {
+              "content": "Refunds a paid payment in full or in part. Omit `amount` for a full refund.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payment UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8be90c62-fde4-4a77-ab90-83ba0cd154f0",
+              "name": "The refunded payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"497286b8-10ac-f8bc-fdb2-467a5e930321\",\n  \"status\": \"refunded\",\n  \"amount\": 7315,\n  \"fee\": 474,\n  \"currency\": \"string\",\n  \"refunded\": 5831,\n  \"refunded_at\": \"1965-07-23T22:23:08.405Z\",\n  \"captured\": 2549,\n  \"captured_at\": \"1993-04-14T22:03:23.070Z\",\n  \"voided_at\": \"1983-12-05T14:01:29.513Z\",\n  \"amount_format\": \"string\",\n  \"description\": \"string\",\n  \"invoice_id\": \"string\",\n  \"ip\": \"string\",\n  \"callback_url\": \"string\",\n  \"created_at\": \"2001-03-07T05:49:04.472Z\",\n  \"updated_at\": \"1984-09-12T04:57:27.896Z\",\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"source\": {\n    \"key_0\": 2084.116958381903,\n    \"key_1\": 9760\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7b04e96-f4ad-4e97-a040-f3c89da044a8",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c581cc0-9ac0-4a60-a44c-c8ac5a6cf61d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2ee5bfc-3558-4b7e-ba1b-173ccea61cac",
+          "name": "Capture a payment",
+          "request": {
+            "name": "Capture a payment",
+            "description": {
+              "content": "Captures an authorized payment, in full or in part. Omit `amount` to capture the full authorized amount.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payment UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0668352f-5e89-4924-a20e-136adbb69af2",
+              "name": "The captured payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"497286b8-10ac-f8bc-fdb2-467a5e930321\",\n  \"status\": \"refunded\",\n  \"amount\": 7315,\n  \"fee\": 474,\n  \"currency\": \"string\",\n  \"refunded\": 5831,\n  \"refunded_at\": \"1965-07-23T22:23:08.405Z\",\n  \"captured\": 2549,\n  \"captured_at\": \"1993-04-14T22:03:23.070Z\",\n  \"voided_at\": \"1983-12-05T14:01:29.513Z\",\n  \"amount_format\": \"string\",\n  \"description\": \"string\",\n  \"invoice_id\": \"string\",\n  \"ip\": \"string\",\n  \"callback_url\": \"string\",\n  \"created_at\": \"2001-03-07T05:49:04.472Z\",\n  \"updated_at\": \"1984-09-12T04:57:27.896Z\",\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"source\": {\n    \"key_0\": 2084.116958381903,\n    \"key_1\": 9760\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84488f1f-1729-4a95-a11a-0815a5017633",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8597776f-3f1e-4b3c-a3c3-d559e0e87e05",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46df3730-44da-4b9f-80cc-184315fe3188",
+          "name": "Void a payment",
+          "request": {
+            "name": "Void a payment",
+            "description": {
+              "content": "Voids an authorized payment that has not yet been captured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payments",
+                ":id",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payment UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "395119f9-21db-4e18-8dda-eb19b69a55ae",
+              "name": "The voided payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"497286b8-10ac-f8bc-fdb2-467a5e930321\",\n  \"status\": \"refunded\",\n  \"amount\": 7315,\n  \"fee\": 474,\n  \"currency\": \"string\",\n  \"refunded\": 5831,\n  \"refunded_at\": \"1965-07-23T22:23:08.405Z\",\n  \"captured\": 2549,\n  \"captured_at\": \"1993-04-14T22:03:23.070Z\",\n  \"voided_at\": \"1983-12-05T14:01:29.513Z\",\n  \"amount_format\": \"string\",\n  \"description\": \"string\",\n  \"invoice_id\": \"string\",\n  \"ip\": \"string\",\n  \"callback_url\": \"string\",\n  \"created_at\": \"2001-03-07T05:49:04.472Z\",\n  \"updated_at\": \"1984-09-12T04:57:27.896Z\",\n  \"metadata\": {\n    \"key_0\": true\n  },\n  \"source\": {\n    \"key_0\": 2084.116958381903,\n    \"key_1\": 9760\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9eb01bdf-2b73-4d0d-95be-9dfb961a38f8",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a8398a5-b2a6-4549-aedf-40132d786c94",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payment UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moyasar.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1d27cca-2d8f-4139-8630-59dcabe68cc4",
+    "name": "Moyasar Invoices Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).\nThis description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.\n\nContact Support:\n Name: Moyasar",
+      "type": "text/plain"
+    }
+  }
+}

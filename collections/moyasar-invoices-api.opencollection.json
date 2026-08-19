@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moyasar Invoices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/invoices",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists invoices on the account with pagination."
+        },
+        {
+          "info": {
+            "name": "Create an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a hosted invoice and returns a Moyasar-hosted checkout `url` to present to the payer."
+        },
+        {
+          "info": {
+            "name": "Bulk create invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/invoices/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates multiple invoices in a single request."
+        },
+        {
+          "info": {
+            "name": "Fetch an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The invoice UUID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single invoice by its ID."
+        },
+        {
+          "info": {
+            "name": "Update an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The invoice UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing invoice."
+        },
+        {
+          "info": {
+            "name": "Cancel an invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.moyasar.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The invoice UUID."
+              }
+            ]
+          },
+          "docs": "Cancels an invoice so it can no longer be paid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

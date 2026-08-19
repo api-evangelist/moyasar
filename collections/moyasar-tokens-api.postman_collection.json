@@ -1,0 +1,446 @@
+{
+  "item": [
+    {
+      "id": "4567325b-b090-4961-b003-1e9be727b836",
+      "name": "Tokens",
+      "description": {
+        "content": "Client-side card tokenization using a publishable key.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef3565e2-c874-440b-8b09-2af9d3896d91",
+          "name": "Create a token",
+          "request": {
+            "name": "Create a token",
+            "description": {
+              "content": "Tokenizes a mada / credit card. Intended to be called from the client side with a publishable key so raw card data never reaches the merchant backend. The resulting token id can be used as a payment source.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"number\": \"<string>\",\n  \"month\": \"<string>\",\n  \"year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"callback_url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05b0aabd-4ba9-4246-982c-d964fcc64a18",
+              "name": "The created token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"number\": \"<string>\",\n  \"month\": \"<string>\",\n  \"year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"callback_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"brand\": \"string\",\n  \"funding\": \"string\",\n  \"company\": \"string\",\n  \"last_four\": \"string\",\n  \"month\": \"string\",\n  \"year\": \"string\",\n  \"verification_url\": \"https://ZNdySYCpPpzF.upquccX5j.Mm3yITZNZOTF+XXa9a1P.pambO5rZR5XllQnjfjoI6qKfxQ.K2iZhsaVwI+\",\n  \"created_at\": \"1994-01-07T09:44:26.440Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14829fd3-c247-456b-a926-9d45e9f8d5e1",
+              "name": "The request payload failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"number\": \"<string>\",\n  \"month\": \"<string>\",\n  \"year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"callback_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 4645,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b1a3f4-3513-4b22-9f45-9b6ad686cfe3",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"number\": \"<string>\",\n  \"month\": \"<string>\",\n  \"year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"callback_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 4645,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82c33ee1-70aa-4354-8419-ee4405223dbe",
+          "name": "Fetch a token",
+          "request": {
+            "name": "Fetch a token",
+            "description": {
+              "content": "Retrieves a single token by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The token ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4af47e55-2603-47c7-b746-97a20552c6f2",
+              "name": "The requested token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The token ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"brand\": \"string\",\n  \"funding\": \"string\",\n  \"company\": \"string\",\n  \"last_four\": \"string\",\n  \"month\": \"string\",\n  \"year\": \"string\",\n  \"verification_url\": \"https://ZNdySYCpPpzF.upquccX5j.Mm3yITZNZOTF+XXa9a1P.pambO5rZR5XllQnjfjoI6qKfxQ.K2iZhsaVwI+\",\n  \"created_at\": \"1994-01-07T09:44:26.440Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "416eb18f-be15-4c34-8f0c-255e31c3783b",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The token ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 4645,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5eb3e30-5c01-4b61-81a8-bdbccd382455",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The token ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 4645,\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moyasar.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "824dfc78-5e3d-4a29-b662-625a0b43004e",
+    "name": "Moyasar Invoices Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).\nThis description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.\n\nContact Support:\n Name: Moyasar",
+      "type": "text/plain"
+    }
+  }
+}

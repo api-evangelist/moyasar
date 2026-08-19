@@ -1,0 +1,1140 @@
+{
+  "item": [
+    {
+      "id": "db6048da-f0d3-406e-9db9-022afe0cbba9",
+      "name": "Payouts",
+      "description": {
+        "content": "Payout accounts and payouts / disbursements.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca7f143c-bd68-449a-883d-ad6fe562f97f",
+          "name": "List payout accounts",
+          "request": {
+            "name": "List payout accounts",
+            "description": {
+              "content": "Lists registered payout accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7aeb7da1-1f00-4576-8793-dbe86f8785d2",
+              "name": "A list of payout accounts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payout_accounts\": [\n    {\n      \"id\": \"fd27ca38-e139-4871-4e3b-9ed42e61464e\",\n      \"account_type\": \"bank\",\n      \"currency\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": true,\n        \"key_2\": false,\n        \"key_3\": 9627\n      },\n      \"created_at\": \"1991-12-07T06:40:02.700Z\"\n    },\n    {\n      \"id\": \"04bf2f0a-dbea-1c07-5470-37f986b450ff\",\n      \"account_type\": \"bank\",\n      \"currency\": \"string\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": 7736.948783764591,\n        \"key_2\": false\n      },\n      \"created_at\": \"1960-12-16T12:52:08.779Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "069a5ba7-bc8e-4ca9-a5db-58ea9febaf4a",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b5598e0-7452-4fe3-bc8f-c7455a87a97d",
+          "name": "Create a payout account",
+          "request": {
+            "name": "Create a payout account",
+            "description": {
+              "content": "Registers a bank or wallet payout account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_type\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"credentials\": {\n    \"key_0\": 9172,\n    \"key_1\": true,\n    \"key_2\": 6377,\n    \"key_3\": 3912\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6db325f-dd51-4659-971a-5e23eadcf7e2",
+              "name": "The created payout account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_type\": \"<string>\",\n  \"properties\": {\n    \"key_0\": false,\n    \"key_1\": 1150,\n    \"key_2\": false\n  },\n  \"credentials\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"33764db8-b8ed-8283-8e32-a5bbe2d4f464\",\n  \"account_type\": \"wallet\",\n  \"currency\": \"string\",\n  \"properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1960\n  },\n  \"created_at\": \"1981-02-11T17:32:39.266Z\",\n  \"key_0\": 7851.461448745709\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d07117e6-c85e-40e5-a038-35928b02aac5",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_type\": \"<string>\",\n  \"properties\": {\n    \"key_0\": false,\n    \"key_1\": 1150,\n    \"key_2\": false\n  },\n  \"credentials\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7066947-0e02-4ae0-9f39-3279762d4bef",
+          "name": "Fetch a payout account",
+          "request": {
+            "name": "Fetch a payout account",
+            "description": {
+              "content": "Retrieves a single payout account by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payout_accounts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payout account ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc54d81b-0644-4a99-b02e-fe5867fabf89",
+              "name": "The requested payout account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout account ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"33764db8-b8ed-8283-8e32-a5bbe2d4f464\",\n  \"account_type\": \"wallet\",\n  \"currency\": \"string\",\n  \"properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": 1960\n  },\n  \"created_at\": \"1981-02-11T17:32:39.266Z\",\n  \"key_0\": 7851.461448745709\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b251104a-3ce5-4277-865c-69ccff2ce135",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout account ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7373cdd-7405-4915-b14c-2df21f29f8e3",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_accounts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout account ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e401c62-4de9-4de7-8598-4ac967e924e8",
+          "name": "List payouts",
+          "request": {
+            "name": "List payouts",
+            "description": {
+              "content": "Lists payouts on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb7a69e0-2f37-4b30-b913-5f61aae8a71a",
+              "name": "A list of payouts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payouts\": [\n    {\n      \"id\": \"3caf2685-a126-1ece-7439-41de69cec6a4\",\n      \"status\": \"string\",\n      \"amount\": 6368,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"payout_account_id\": \"6df2d917-03a8-d569-9b8c-e3cc1ca97169\",\n      \"description\": \"string\",\n      \"created_at\": \"1965-03-24T21:13:20.260Z\"\n    },\n    {\n      \"id\": \"5bbea2f5-4a82-680a-e872-b062fce46e56\",\n      \"status\": \"string\",\n      \"amount\": 5699,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"payout_account_id\": \"1558f0e5-82f1-99cd-68ae-ffc6fbf7227a\",\n      \"description\": \"string\",\n      \"created_at\": \"2003-05-30T19:28:29.196Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9be69a21-27b2-4559-bdc5-b0524a130f6c",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80977792-d7be-41fe-a736-3128b7ef0034",
+          "name": "Create a payout",
+          "request": {
+            "name": "Create a payout",
+            "description": {
+              "content": "Sends a single payout / disbursement to a payout account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"payout_account_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2139e93a-8186-4a5f-bc97-8ee2ca087066",
+              "name": "The created payout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"payout_account_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4933.290049685816\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3de222e6-5689-6a27-d316-f3590104cff8\",\n  \"status\": \"string\",\n  \"amount\": 5410,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"payout_account_id\": \"4aed25e3-3371-d4f9-d853-4905c966726a\",\n  \"description\": \"string\",\n  \"created_at\": \"2014-08-26T21:13:08.130Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "077be066-1a7b-463e-83a0-e01e20f721b8",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"currency\": \"SAR\",\n  \"payout_account_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": 4933.290049685816\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b09816c-13e4-4e6e-8846-b9c60962a7e5",
+          "name": "Bulk create payouts",
+          "request": {
+            "name": "Bulk create payouts",
+            "description": {
+              "content": "Sends multiple payouts in a single request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payouts\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": 8740\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": false\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca04393e-82d6-48a5-99d0-29f5b37ab359",
+              "name": "The created payouts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payouts\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": true\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": 5110,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payouts\": [\n    {\n      \"id\": \"3caf2685-a126-1ece-7439-41de69cec6a4\",\n      \"status\": \"string\",\n      \"amount\": 6368,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"payout_account_id\": \"6df2d917-03a8-d569-9b8c-e3cc1ca97169\",\n      \"description\": \"string\",\n      \"created_at\": \"1965-03-24T21:13:20.260Z\"\n    },\n    {\n      \"id\": \"5bbea2f5-4a82-680a-e872-b062fce46e56\",\n      \"status\": \"string\",\n      \"amount\": 5699,\n      \"amount_format\": \"string\",\n      \"currency\": \"string\",\n      \"payout_account_id\": \"1558f0e5-82f1-99cd-68ae-ffc6fbf7227a\",\n      \"description\": \"string\",\n      \"created_at\": \"2003-05-30T19:28:29.196Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c627143-7528-4c31-a661-0792c60bf401",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payouts\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": true\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency\": \"SAR\",\n      \"payout_account_id\": \"<uuid>\",\n      \"description\": \"<string>\",\n      \"metadata\": {\n        \"key_0\": 5110,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96c723f4-b5f2-42e9-ab1a-7d99d2b33251",
+          "name": "Fetch a payout",
+          "request": {
+            "name": "Fetch a payout",
+            "description": {
+              "content": "Retrieves a single payout by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payouts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The payout ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21647399-e519-433d-912b-e3f39d453916",
+              "name": "The requested payout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3de222e6-5689-6a27-d316-f3590104cff8\",\n  \"status\": \"string\",\n  \"amount\": 5410,\n  \"amount_format\": \"string\",\n  \"currency\": \"string\",\n  \"payout_account_id\": \"4aed25e3-3371-d4f9-d853-4905c966726a\",\n  \"description\": \"string\",\n  \"created_at\": \"2014-08-26T21:13:08.130Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d42b5fd6-1bd8-40ce-a43c-38f319b9d334",
+              "name": "Invalid or missing authorization credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9763aeb4-cfbc-40f8-bc78-ea0609cd8392",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payouts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The payout ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": 9863.81302531657,\n    \"key_1\": 1796\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.moyasar.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b2e74cde-2f4d-4088-98e8-607954132175",
+    "name": "Moyasar Invoices Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).\nThis description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.\n\nContact Support:\n Name: Moyasar",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moyasar Invoices Tokens API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tokenizes a mada / credit card. Intended to be called from the client side with a publishable key so raw card data never reaches the merchant backend. The resulting token id can be used as a payment source."
+        },
+        {
+          "info": {
+            "name": "Fetch a token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/tokens/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The token ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single token by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

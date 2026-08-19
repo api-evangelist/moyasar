@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Moyasar Invoices Payouts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payout accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payout_accounts"
+          },
+          "docs": "Lists registered payout accounts."
+        },
+        {
+          "info": {
+            "name": "Create a payout account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payout_accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a bank or wallet payout account."
+        },
+        {
+          "info": {
+            "name": "Fetch a payout account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payout_accounts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The payout account ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single payout account by its ID."
+        },
+        {
+          "info": {
+            "name": "List payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payouts"
+          },
+          "docs": "Lists payouts on the account."
+        },
+        {
+          "info": {
+            "name": "Create a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payouts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a single payout / disbursement to a payout account."
+        },
+        {
+          "info": {
+            "name": "Bulk create payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.moyasar.com/v1/payouts/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends multiple payouts in a single request."
+        },
+        {
+          "info": {
+            "name": "Fetch a payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.moyasar.com/v1/payouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The payout ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single payout by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
