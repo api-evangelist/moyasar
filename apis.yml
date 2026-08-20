@@ -164,6 +164,8 @@ apis:
   humanURL: https://docs.moyasar.com/api/payments/01-create-payment
   baseURL: https://api.moyasar.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
