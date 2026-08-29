@@ -9,6 +9,18 @@ description: Moyasar is a Saudi Arabian payment gateway that lets businesses acc
   webhooks, and payouts / disbursements. Authentication is HTTP Basic with a publishable
   or secret API key as the username and an empty password, in separate test and live
   modes.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
