@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Moyasar Invoices API
-  description: 'Moyasar is a Saudi Arabian payment gateway. Its REST API lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay, issue hosted invoices, tokenize cards, receive webhooks, and send payouts. All requests are made over HTTPS to https://api.moyasar.com/v1 and authenticated with HTTP Basic auth using an API key as the username and an empty password. Publishable keys (pk_test_ / pk_live_) may only create payments and tokens from the client side; secret keys (sk_test_ / sk_live_) authorize all account operations from the backend. Monetary amounts are expressed in the smallest currency unit (for SAR, halalas: 1.00 SAR = 100).
-
-    This description captures a representative, grounded subset of the documented API. Request and response schemas are modeled from the public documentation and are intentionally partial (additionalProperties allowed); consult the Moyasar docs for exhaustive field-level detail.'
+  description: Moyasar is a Saudi Arabian payment gateway.
   version: '1.0'
   contact:
     name: Moyasar
@@ -166,41 +164,82 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Invalid or missing authorization credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    PaginationMeta:
+    Payment:
       type: object
       properties:
-        current_page:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - initiated
+          - paid
+          - authorized
+          - failed
+          - refunded
+          - captured
+          - voided
+          - verified
+        amount:
           type: integer
-        next_page:
+        fee:
           type: integer
-          nullable: true
-        prev_page:
+        currency:
+          type: string
+        refunded:
           type: integer
-          nullable: true
-        total_pages:
+        refunded_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        captured:
           type: integer
-        total_count:
-          type: integer
+        captured_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        voided_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        amount_format:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        invoice_id:
+          type:
+          - string
+          - 'null'
+        ip:
+          type:
+          - string
+          - 'null'
+        callback_url:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+        source:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
     InvoiceInput:
       type: object
       required:
@@ -231,6 +270,23 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        prev_page:
+          type:
+          - integer
+          - 'null'
+        total_pages:
+          type: integer
+        total_count:
+          type: integer
     Invoice:
       type: object
       properties:
@@ -261,9 +317,10 @@ components:
           format: uri
           description: Hosted checkout URL to present to the payer.
         expired_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         payments:
           type: array
           items:
@@ -275,75 +332,9 @@ components:
           type: string
           format: date-time
         metadata:
-          type: object
-          nullable: true
-          additionalProperties: true
-      additionalProperties: true
-    Payment:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - initiated
-          - paid
-          - authorized
-          - failed
-          - refunded
-          - captured
-          - voided
-          - verified
-        amount:
-          type: integer
-        fee:
-          type: integer
-        currency:
-          type: string
-        refunded:
-          type: integer
-        refunded_at:
-          type: string
-          format: date-time
-          nullable: true
-        captured:
-          type: integer
-        captured_at:
-          type: string
-          format: date-time
-          nullable: true
-        voided_at:
-          type: string
-          format: date-time
-          nullable: true
-        amount_format:
-          type: string
-        description:
-          type: string
-          nullable: true
-        invoice_id:
-          type: string
-          nullable: true
-        ip:
-          type: string
-          nullable: true
-        callback_url:
-          type: string
-          nullable: true
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        metadata:
-          type: object
-          nullable: true
-          additionalProperties: true
-        source:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties: true
       additionalProperties: true
     Error:
@@ -356,6 +347,25 @@ components:
         errors:
           type: object
           additionalProperties: true
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     InvoiceId:
       name: id
