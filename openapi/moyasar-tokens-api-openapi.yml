@@ -69,28 +69,16 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    TokenInput:
+    Error:
       type: object
-      required:
-      - name
-      - number
-      - month
-      - year
-      - cvc
       properties:
-        name:
+        type:
           type: string
-        number:
+        message:
           type: string
-        month:
-          type: string
-        year:
-          type: string
-        cvc:
-          type: string
-        callback_url:
-          type: string
-          format: uri
+        errors:
+          type: object
+          additionalProperties: true
     Token:
       type: object
       properties:
@@ -119,19 +107,31 @@ components:
           type: string
           format: date-time
       additionalProperties: true
-    Error:
+    TokenInput:
       type: object
+      required:
+      - name
+      - number
+      - month
+      - year
+      - cvc
       properties:
-        type:
+        name:
           type: string
-        message:
+        number:
           type: string
-        errors:
-          type: object
-          additionalProperties: true
+        month:
+          type: string
+        year:
+          type: string
+        cvc:
+          type: string
+        callback_url:
+          type: string
+          format: uri
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:
@@ -142,8 +142,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request payload failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

@@ -187,40 +187,17 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing authorization credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    PayoutAccount:
+    Error:
       type: object
       properties:
-        id:
+        type:
           type: string
-          format: uuid
-        account_type:
+        message:
           type: string
-          enum:
-          - bank
-          - wallet
-        currency:
-          type: string
-        properties:
+        errors:
           type: object
           additionalProperties: true
-        created_at:
-          type: string
-          format: date-time
-      additionalProperties: true
     PayoutAccountInput:
       type: object
       required:
@@ -239,27 +216,6 @@ components:
         credentials:
           type: object
           description: Secret account information (e.g. private keys).
-          additionalProperties: true
-    PayoutInput:
-      type: object
-      required:
-      - amount
-      - currency
-      - payout_account_id
-      properties:
-        amount:
-          type: integer
-          description: Amount in the smallest currency unit.
-        currency:
-          type: string
-          default: SAR
-        payout_account_id:
-          type: string
-          format: uuid
-        description:
-          type: string
-        metadata:
-          type: object
           additionalProperties: true
     Payout:
       type: object
@@ -286,16 +242,60 @@ components:
           type: string
           format: date-time
       additionalProperties: true
-    Error:
+    PayoutAccount:
       type: object
       properties:
-        type:
+        id:
           type: string
-        message:
+          format: uuid
+        account_type:
           type: string
-        errors:
+          enum:
+          - bank
+          - wallet
+        currency:
+          type: string
+        properties:
           type: object
           additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    PayoutInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - payout_account_id
+      properties:
+        amount:
+          type: integer
+          description: Amount in the smallest currency unit.
+        currency:
+          type: string
+          default: SAR
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

@@ -145,26 +145,35 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing authorization credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request payload failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        http_method:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
     WebhookInput:
       type: object
       required:
@@ -194,34 +203,25 @@ components:
             - payment_verified
             - card_auth_authenticated
             - card_auth_failed
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-          format: uri
-        http_method:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
-        created_at:
-          type: string
-          format: date-time
-      additionalProperties: true
-    Error:
-      type: object
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
+  responses:
+    BadRequest:
+      description: The request payload failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     WebhookId:
       name: id

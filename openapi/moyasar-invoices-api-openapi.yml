@@ -165,6 +165,113 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties: true
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        prev_page:
+          type:
+          - integer
+          - 'null'
+        total_pages:
+          type: integer
+        total_count:
+          type: integer
+    InvoiceInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - description
+      properties:
+        amount:
+          type: integer
+          description: Amount in the smallest currency unit (minimum 100).
+        currency:
+          type: string
+          default: SAR
+        description:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+        success_url:
+          type: string
+          format: uri
+        back_url:
+          type: string
+          format: uri
+        expired_at:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties: true
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - initiated
+          - paid
+          - failed
+          - refunded
+          - canceled
+          - on_hold
+          - expired
+          - voided
+        amount:
+          type: integer
+        amount_format:
+          type: string
+        currency:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+          description: Hosted checkout URL to present to the payer.
+        expired_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+      additionalProperties: true
     Payment:
       type: object
       properties:
@@ -240,116 +347,18 @@ components:
           type: object
           additionalProperties: true
       additionalProperties: true
-    InvoiceInput:
-      type: object
-      required:
-      - amount
-      - currency
-      - description
-      properties:
-        amount:
-          type: integer
-          description: Amount in the smallest currency unit (minimum 100).
-        currency:
-          type: string
-          default: SAR
-        description:
-          type: string
-        callback_url:
-          type: string
-          format: uri
-        success_url:
-          type: string
-          format: uri
-        back_url:
-          type: string
-          format: uri
-        expired_at:
-          type: string
-          format: date-time
-        metadata:
-          type: object
-          additionalProperties: true
-    PaginationMeta:
-      type: object
-      properties:
-        current_page:
-          type: integer
-        next_page:
-          type:
-          - integer
-          - 'null'
-        prev_page:
-          type:
-          - integer
-          - 'null'
-        total_pages:
-          type: integer
-        total_count:
-          type: integer
-    Invoice:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - initiated
-          - paid
-          - failed
-          - refunded
-          - canceled
-          - on_hold
-          - expired
-          - voided
-        amount:
-          type: integer
-        amount_format:
-          type: string
-        currency:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-          format: uri
-          description: Hosted checkout URL to present to the payer.
-        expired_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        payments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties: true
-      additionalProperties: true
-    Error:
-      type: object
-      properties:
-        type:
-          type: string
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties: true
+  parameters:
+    InvoiceId:
+      name: id
+      in: path
+      required: true
+      description: The invoice UUID.
+      schema:
+        type: string
+        format: uuid
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    BadRequest:
+      description: The request payload failed validation.
       content:
         application/json:
           schema:
@@ -360,21 +369,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request payload failed validation.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    InvoiceId:
-      name: id
-      in: path
-      required: true
-      description: The invoice UUID.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     basicAuth:
       type: http
