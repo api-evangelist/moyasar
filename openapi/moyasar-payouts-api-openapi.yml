@@ -188,6 +188,72 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    PayoutAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        account_type:
+          type: string
+          enum:
+          - bank
+          - wallet
+        currency:
+          type: string
+        properties:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    Payout:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        amount:
+          type: integer
+        amount_format:
+          type: string
+        currency:
+          type: string
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
+    PayoutInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - payout_account_id
+      properties:
+        amount:
+          type: integer
+          description: Amount in the smallest currency unit.
+        currency:
+          type: string
+          default: SAR
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
     Error:
       type: object
       properties:
@@ -217,81 +283,15 @@ components:
           type: object
           description: Secret account information (e.g. private keys).
           additionalProperties: true
-    Payout:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-        amount:
-          type: integer
-        amount_format:
-          type: string
-        currency:
-          type: string
-        payout_account_id:
-          type: string
-          format: uuid
-        description:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-      additionalProperties: true
-    PayoutAccount:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        account_type:
-          type: string
-          enum:
-          - bank
-          - wallet
-        currency:
-          type: string
-        properties:
-          type: object
-          additionalProperties: true
-        created_at:
-          type: string
-          format: date-time
-      additionalProperties: true
-    PayoutInput:
-      type: object
-      required:
-      - amount
-      - currency
-      - payout_account_id
-      properties:
-        amount:
-          type: integer
-          description: Amount in the smallest currency unit.
-        currency:
-          type: string
-          default: SAR
-        payout_account_id:
-          type: string
-          format: uuid
-        description:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
   responses:
-    Unauthorized:
-      description: Invalid or missing authorization credentials.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
       content:
         application/json:
           schema:
