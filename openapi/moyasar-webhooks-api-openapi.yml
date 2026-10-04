@@ -152,29 +152,37 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Invalid or missing authorization credentials.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    Webhook:
       type: object
       properties:
-        type:
+        id:
           type: string
-        message:
+        url:
           type: string
-        errors:
-          type: object
-          additionalProperties: true
+          format: uri
+        http_method:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+      additionalProperties: true
     WebhookInput:
       type: object
       required:
@@ -204,24 +212,16 @@ components:
             - payment_verified
             - card_auth_authenticated
             - card_auth_failed
-    Webhook:
+    Error:
       type: object
       properties:
-        id:
+        type:
           type: string
-        url:
+        message:
           type: string
-          format: uri
-        http_method:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
-        created_at:
-          type: string
-          format: date-time
-      additionalProperties: true
+        errors:
+          type: object
+          additionalProperties: true
   parameters:
     WebhookId:
       name: id

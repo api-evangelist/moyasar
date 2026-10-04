@@ -208,6 +208,46 @@ components:
           type: string
           format: date-time
       additionalProperties: true
+    PayoutInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - payout_account_id
+      properties:
+        amount:
+          type: integer
+          description: Amount in the smallest currency unit.
+        currency:
+          type: string
+          default: SAR
+        payout_account_id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    PayoutAccountInput:
+      type: object
+      required:
+      - account_type
+      - properties
+      properties:
+        account_type:
+          type: string
+          enum:
+          - bank
+          - wallet
+        properties:
+          type: object
+          description: Public account information (e.g. IBAN for bank accounts).
+          additionalProperties: true
+        credentials:
+          type: object
+          description: Secret account information (e.g. private keys).
+          additionalProperties: true
     Payout:
       type: object
       properties:
@@ -233,27 +273,6 @@ components:
           type: string
           format: date-time
       additionalProperties: true
-    PayoutInput:
-      type: object
-      required:
-      - amount
-      - currency
-      - payout_account_id
-      properties:
-        amount:
-          type: integer
-          description: Amount in the smallest currency unit.
-        currency:
-          type: string
-          default: SAR
-        payout_account_id:
-          type: string
-          format: uuid
-        description:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
     Error:
       type: object
       properties:
@@ -264,34 +283,15 @@ components:
         errors:
           type: object
           additionalProperties: true
-    PayoutAccountInput:
-      type: object
-      required:
-      - account_type
-      - properties
-      properties:
-        account_type:
-          type: string
-          enum:
-          - bank
-          - wallet
-        properties:
-          type: object
-          description: Public account information (e.g. IBAN for bank accounts).
-          additionalProperties: true
-        credentials:
-          type: object
-          description: Secret account information (e.g. private keys).
-          additionalProperties: true
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Invalid or missing authorization credentials.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing authorization credentials.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

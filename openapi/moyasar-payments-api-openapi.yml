@@ -221,19 +221,78 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Invalid or missing authorization credentials.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    PaymentId:
+      name: id
+      in: path
+      required: true
+      description: The payment UUID.
+      schema:
+        type: string
+        format: uuid
   schemas:
+    PaymentInput:
+      type: object
+      required:
+      - amount
+      - currency
+      - source
+      properties:
+        amount:
+          type: integer
+          description: Positive amount in the smallest currency unit (halalas for SAR).
+        currency:
+          type: string
+          description: ISO-4217 three-letter code (e.g. SAR).
+          default: SAR
+        source:
+          $ref: '#/components/schemas/PaymentSource'
+        description:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+          description: Required for creditcard and token sources.
+        given_id:
+          type: string
+          description: Client-supplied UUID for idempotency.
+        metadata:
+          type: object
+          additionalProperties: true
+        splits:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        prev_page:
+          type:
+          - integer
+          - 'null'
+        total_pages:
+          type: integer
+        total_count:
+          type: integer
     Payment:
       type: object
       properties:
@@ -309,39 +368,6 @@ components:
           type: object
           additionalProperties: true
       additionalProperties: true
-    PaymentInput:
-      type: object
-      required:
-      - amount
-      - currency
-      - source
-      properties:
-        amount:
-          type: integer
-          description: Positive amount in the smallest currency unit (halalas for SAR).
-        currency:
-          type: string
-          description: ISO-4217 three-letter code (e.g. SAR).
-          default: SAR
-        source:
-          $ref: '#/components/schemas/PaymentSource'
-        description:
-          type: string
-        callback_url:
-          type: string
-          format: uri
-          description: Required for creditcard and token sources.
-        given_id:
-          type: string
-          description: Client-supplied UUID for idempotency.
-        metadata:
-          type: object
-          additionalProperties: true
-        splits:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     Error:
       type: object
       properties:
@@ -352,23 +378,6 @@ components:
         errors:
           type: object
           additionalProperties: true
-    PaginationMeta:
-      type: object
-      properties:
-        current_page:
-          type: integer
-        next_page:
-          type:
-          - integer
-          - 'null'
-        prev_page:
-          type:
-          - integer
-          - 'null'
-        total_pages:
-          type: integer
-        total_count:
-          type: integer
     PaymentSource:
       type: object
       description: Payment source. The `type` field selects the method. Additional fields depend on the source type (card fields, token id, wallet token, etc.).
@@ -394,15 +403,6 @@ components:
         token:
           type: string
       additionalProperties: true
-  parameters:
-    PaymentId:
-      name: id
-      in: path
-      required: true
-      description: The payment UUID.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     basicAuth:
       type: http
