@@ -204,6 +204,9 @@ apis:
   - type: Documentation
     url: https://docs.moyasar.com/api/payouts/01-create-payout-account
 common:
+- type: CapabilityMap
+  url: capabilities/moyasar-capability-edges.yml
+  name: Moyasar Business Capability Map
 - type: AgenticAccess
   url: agentic-access/moyasar-agentic-access.yml
 - type: DomainSecurity

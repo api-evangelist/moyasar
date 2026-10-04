@@ -1,0 +1,38 @@
+slug: moyasar
+provider: Moyasar
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Webhooks
+  spec_file: moyasar-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: POST /webhooks  createWebhook; GET /webhooks/{id}/attempts  listWebhookAttempts; GET /webhooks/available_events  listAvailableWebhookEvents
+  reason: Vendor-side lifecycle of outbound webhook subscriptions, available event catalogue and delivery-attempt
+    visibility — exactly Webhook & Event Subscription Management within the developer-platform capability.
+    Confidence 0.8 rather than higher because webhook surfaces are sometimes treated as non-capability
+    plumbing.
+- tag: Invoices
+  spec_file: moyasar-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.7
+  evidence: POST /invoices  createInvoice  Create an invoice; POST /invoices/bulk  createInvoicesBulk;
+    DELETE /invoices/{id}  cancelInvoice; schemas Invoice, InvoiceInput, Payment
+  reason: Hosted invoice issuance to customers with linked payment objects — customer invoicing and collection
+    of receivables. Not subscription billing (no plans, no recurring schedules), so Accounts Receivable
+    Management is the better fit; confidence moderated because these are one-off payment-request invoices
+    rather than full AR ledger management.
