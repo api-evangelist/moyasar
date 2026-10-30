@@ -1,4 +1,4 @@
-# Moyasar (moyasar)
+# Moyasar
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,165 +64,125 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Moyasar is a Saudi Arabian payment gateway that lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay. Its REST API (base `https://api.moyasar.com/v1`) covers payments (create, fetch, list, refund, capture, void), hosted invoices, card tokenization, webhooks, and payouts / disbursements.
+Moyasar is a Saudi Arabian payment gateway that lets businesses accept online payments across mada, Visa, Mastercard, American Express, Apple Pay, Samsung Pay, and STC Pay. Its REST API (base https://api.moyasar.com/v1) covers payments (create, fetch, list, refund, capture, void), hosted invoices, card tokenization, webhooks, and payouts / disbursements. Authentication is HTTP Basic with a publishable or secret API key as the username and an empty password, in separate test and live modes.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/moyasar/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/moyasar/refs/heads/main/apis.yml)
+**Areas:** Payments · Payment Gateway · Saudi Arabia · MENA · mada · Cards · Apple Pay · STC Pay · Invoices · Fintech
 
-## Access Model (Read This First)
+## Moyasar on APIs.io
 
-- **Transport:** Request/response REST over HTTPS only. Plain HTTP is rejected. Base URL is `https://api.moyasar.com/v1`.
-- **Authentication:** HTTP Basic auth. Your API **key is the username** and the **password is empty** — e.g. `curl https://api.moyasar.com/v1/payments -u sk_test_123:` (note the trailing colon).
-- **Two key classes:**
-  - **Publishable keys** (`pk_test_` / `pk_live_`) — safe for client-side use, restricted to creating payments and tokenizing cards, so raw card data never reaches your backend.
-  - **Secret keys** (`sk_test_` / `sk_live_`) — authorize all account operations; keep them backend-only. If leaked, regenerate immediately.
-- **Two modes:** `*_test_` keys drive a sandbox; `*_live_` keys move real money.
-- **Amounts** are integers in the smallest currency unit — for SAR, halalas (`1.00 SAR = 100`).
-- **Realtime updates** are delivered by **outbound webhooks over HTTP POST**, not a WebSocket. See the review note below.
+Everything profiled for Moyasar is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/moyasar/](https://apis.io/providers/moyasar/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Payments
-- Payment Gateway
-- Saudi Arabia
-- MENA
-- mada
-- Cards
-- Apple Pay
-- STC Pay
-- Invoices
-- Fintech
+- [Moyasar Invoices API](https://apis.io/apis/moyasar/moyasar-invoices-api/) — Hosted invoices with a Moyasar-hosted checkout URL.
+- [Moyasar Payments API](https://apis.io/apis/moyasar/moyasar-payments-api/) — Create and manage card and wallet payments.
+- [Moyasar Payouts API](https://apis.io/apis/moyasar/moyasar-payouts-api/) — Payout accounts and payouts / disbursements.
+- [Moyasar Tokens API](https://apis.io/apis/moyasar/moyasar-tokens-api/) — Client-side card tokenization using a publishable key.
+- [Moyasar Webhooks API](https://apis.io/apis/moyasar/moyasar-webhooks-api/) — Server-to-server event notifications over HTTP POST.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-12
-- **Modified:** 2026-07-12
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Moyasar Payments API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Create, fetch, and list card / wallet payments and manage their lifecycle — refund, capture (for authorized payments), and void. Sources include `creditcard`, `token`, `applepay`, `samsungpay`, and `stcpay`.
+- [Moyasar Agentic Access](https://apis.io/agentic-access/moyasar/moyasar-agentic-access/)
 
-- **Human URL:** [https://docs.moyasar.com/api/payments/01-create-payment](https://docs.moyasar.com/api/payments/01-create-payment)
-- **Base URL:** `https://api.moyasar.com/v1`
+#### Collections (6)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Payments
-- Cards
-- mada
-- Refunds
+- [Moyasar API](https://apis.io/collections/moyasar/open-moyasar/)
+- [Moyasar Invoices API](https://apis.io/collections/moyasar/open-moyasar-invoices-api/)
+- [Moyasar Invoices Payments API](https://apis.io/collections/moyasar/open-moyasar-payments-api/)
+- [Moyasar Invoices Payouts API](https://apis.io/collections/moyasar/open-moyasar-payouts-api/)
+- [Moyasar Invoices Tokens API](https://apis.io/collections/moyasar/open-moyasar-tokens-api/)
+- [Moyasar Invoices Webhooks API](https://apis.io/collections/moyasar/open-moyasar-webhooks-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.moyasar.com/api/payments/01-create-payment)
-- [API Reference](https://docs.moyasar.com/api/payments/02-fetch-payment)
-- [OpenAPI](openapi/moyasar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moyasar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moyasar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Moyasar Invoices API
+- [Moyasar Authentication](https://apis.io/security/moyasar/moyasar-authentication/)
+- [Moyasar Domain Security](https://apis.io/security/moyasar/moyasar-domain-security/)
 
-Create hosted invoices that return a Moyasar-hosted checkout URL, then fetch, list, update, and cancel them. Supports bulk creation, expiry, and success / back / callback URLs.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://docs.moyasar.com/api/invoices/01-create-invoice](https://docs.moyasar.com/api/invoices/01-create-invoice)
-- **Base URL:** `https://api.moyasar.com/v1`
+Published plans, tiers and prices.
 
-#### Tags
+- [Moyasar Plans Pricing](https://apis.io/plans/moyasar/moyasar-plans-pricing/)
 
-- Invoices
-- Hosted Checkout
-- Billing
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://docs.moyasar.com/api/invoices/01-create-invoice)
-- [OpenAPI](openapi/moyasar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moyasar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moyasar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Moyasar Rate Limits](https://apis.io/rate-limits/moyasar/moyasar-rate-limits/)
 
-### Moyasar Tokens API
+#### FinOps (1)
 
-Tokenize mada / credit cards from the client side using a publishable key so card data never touches the merchant backend, then reuse the token as a payment source. Create and fetch tokens.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.moyasar.com/api/other/tokens/create-token/](https://docs.moyasar.com/api/other/tokens/create-token/)
-- **Base URL:** `https://api.moyasar.com/v1`
+- [Moyasar Finops](https://apis.io/finops/moyasar/moyasar-finops/)
 
-#### Tags
+## Where to find this API
 
-- Tokenization
-- Cards
-- Publishable Key
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://docs.moyasar.com/api/other/tokens/create-token/)
-- [API Reference](https://docs.moyasar.com/api/other/tokens/token-object/)
-- [OpenAPI](openapi/moyasar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moyasar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moyasar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moyasar Webhooks API
-
-Register HTTPS endpoints to receive server-to-server event notifications (`payment_paid`, `payment_failed`, `payment_refunded`, `payment_captured`, `payment_voided`, `payment_authorized`, and more). Create, list, fetch, and delete webhooks, list delivery attempts, and list available event types. Delivery is HTTP POST — there is no WebSocket surface.
-
-- **Human URL:** [https://docs.moyasar.com/api/other/webhooks/webhook-reference/](https://docs.moyasar.com/api/other/webhooks/webhook-reference/)
-- **Base URL:** `https://api.moyasar.com/v1`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://docs.moyasar.com/api/other/webhooks/webhook-reference/)
-- [API Reference](https://docs.moyasar.com/api/other/webhooks/create-webhook/)
-- [OpenAPI](openapi/moyasar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moyasar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moyasar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Moyasar Payouts API
-
-Register payout accounts (bank or wallet) and send single, listed, or bulk payouts / disbursements. Create and list payout accounts, create single and bulk payouts, and fetch or list individual payouts.
-
-- **Human URL:** [https://docs.moyasar.com/api/payouts/01-create-payout-account](https://docs.moyasar.com/api/payouts/01-create-payout-account)
-- **Base URL:** `https://api.moyasar.com/v1`
-
-#### Tags
-
-- Payouts
-- Disbursements
-- Bank Transfer
-
-#### Properties
-
-- [Documentation](https://docs.moyasar.com/api/payouts/01-create-payout-account)
-- [OpenAPI](openapi/moyasar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/moyasar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/moyasar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Domain Security](security/moyasar-domain-security.yml)
-- [Authentication](authentication/moyasar-authentication.yml)
-- [LinkedIn](https://www.linkedin.com/company/moyasar)
 - [Website](https://moyasar.com/)
 - [Documentation](https://docs.moyasar.com/)
-- [Plans](plans/moyasar-plans-pricing.yml)
-- [Rate Limits](rate-limits/moyasar-rate-limits.yml)
-- [Fin Ops](finops/moyasar-finops.yml)
+- [Blog](https://moyasar.com/en/blog/)
 
-## WebSocket Review
+## API Evangelist rating
 
-**Does Moyasar expose a documented public WebSocket API? No.** Moyasar's public API is request/response REST over HTTPS. Its only asynchronous surface is outbound webhooks delivered as HTTP POST to a merchant-registered endpoint (with retries and an optional shared secret) — not a `ws://` / `wss://` transport. No AsyncAPI document was authored. See [review.yml](review.yml).
+**Kin Score 25.6** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Real vs. Modeled
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
 
-All endpoint **paths** in the OpenAPI and collections are grounded in the public Moyasar documentation. Request/response **JSON schemas** are a representative subset modeled from the docs (schemas allow additional properties); some field names and enum members were inferred rather than copied field-for-field. **Pricing** in `plans/` and `finops/` is modeled from public secondary sources (not an official Moyasar rate card) and is marked `reconciled: false`. Confirm exact rates and fields with Moyasar during reconciliation.
+**Agent readiness 19.6** — agent-aware
 
-## Maintainers
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Regulatory alignment 10.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/moyasar/](https://apis.io/providers/moyasar/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Moyasar: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/moyasar/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
